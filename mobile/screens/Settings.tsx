@@ -14,6 +14,7 @@ export default function Settings() {
                          {options.map((data) => {
                               return (
                                    <Pressable
+                                        key={data}
                                         style={({ pressed }) => ({
                                              opacity: pressed ? 0.5 : 1,
                                         })}
