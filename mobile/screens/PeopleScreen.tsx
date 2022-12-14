@@ -11,7 +11,7 @@ import { TitleDivision } from '../components/TitleDivision';
 type peopleScreenProps = {
      navigation: any;
      route: {
-          params: { people: [{ idUser: string; name: string; img?: string }] };
+          params: { people: { idUser: string; name: string; img?: string }[] };
      };
 };
 
@@ -19,17 +19,7 @@ export default function PeopleScreen(
      // { navigation }: RootStackScreenProps<'PeopleScreen'>
      { navigation, route }: peopleScreenProps
 ) {
-     // const { people } = route.params;
-
-     const people = [
-          { idUser: 'asdaasgdsd', name: 'Juan', img: '' },
-          { idUser: 'asdasgd', name: 'Dormir' },
-          { idUser: 'asdgagsasd', name: 'Pan' },
-          { idUser: 'asdaasdsd', name: 'Hori' },
-          { idUser: 'asdaagsdsd', name: 'Mary' },
-          { idUser: 'asdagFsd', name: 'Uli' },
-          { idUser: 'asdaASsgqd', name: 'Pablo' },
-     ];
+     const people = route.params;
 
      return (
           <View style={styles.container}>

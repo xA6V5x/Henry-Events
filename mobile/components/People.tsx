@@ -4,9 +4,9 @@ import { Image, Pressable, StyleSheet } from 'react-native';
 import { Text } from './Themed';
 
 type asistoProps = {
-     people: [{ idUser: string; name: string; img?: string }];
+     people: { idUser: string; name: string; img?: string }[];
      total: number | string;
-     closeModal: (n: boolean) => void;
+     closeModal?: (n: boolean) => void;
      margin?: number | string;
      marginTop?: number | string;
      marginLeft?: number | string;
@@ -30,8 +30,8 @@ export function People({
           <Pressable
                onPress={() => {
                     // SACAR ESTE CARRAR MODAL, ES TEMPORAL PARA QUE NO SE ROMPA
-                    closeModal(false);
-                    navigation.navigate('PeopleScreen', people);
+                    closeModal ? closeModal(false) : null;
+                    navigation.push('PeopleScreen', people);
                }}
                style={{
                     ...styles.container,

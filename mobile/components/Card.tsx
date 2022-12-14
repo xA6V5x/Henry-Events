@@ -21,8 +21,8 @@ type cardProps = {
           name: string;
           img?: string;
      };
-     people: [{ idUser: string; name: string; img?: string }];
-     comments: [{ idComment: string; idUser: string; name: string; img?: string; comment: string }];
+     people: { idUser: string; name: string; img?: string }[];
+     comments: { idComment: string; idUser: string; name: string; img?: string; comment: string }[];
      favorite: boolean;
 };
 
@@ -72,12 +72,7 @@ export default function Card({
                     onPress={
                          () => setView(true)
                          // navigation.navigate('Modal', {
-                         //      date,
-                         //      mounth,
-                         //      title,
-                         //      isFavorite,
-                         //      setFavorite,
-                         //      setFavorite: handleFavorite,
+                         //      idPost, isFavorite
                          // })
                     }
                     style={({ pressed }) => ({

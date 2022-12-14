@@ -21,8 +21,8 @@ type modalProps = {
           name: string;
           img?: string;
      };
-     people: [{ idUser: string; name: string; img?: string }];
-     comments: [{ idComment: string; idUser: string; name: string; img?: string; comment: string }];
+     people: { idUser: string; name: string; img?: string }[];
+     comments: { idComment: string; idUser: string; name: string; img?: string; comment: string }[];
      //--------------//
      isFavorite: boolean;
      setFavorite: (n: boolean) => void;
@@ -53,6 +53,7 @@ export default function ModalDescription({
      }
 
      const handleSetAssist = (boolean: boolean) => {
+          // navigation.navigation('PeopleScren');
           setAssist(boolean);
           //   axios.put('https://', boolean)
      };
