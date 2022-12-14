@@ -105,6 +105,7 @@ export default function ModalDescription({
                               <View style={styles.people_assist}>
                                    <Assist isAssist={isAssist} setAssist={handleSetAssist} />
                                    <People
+                                        closeModal={closeModal}
                                         people={people}
                                         total={isAssist ? people.length + 1 : people.length}
                                    />

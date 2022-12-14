@@ -6,6 +6,7 @@ import { Text } from './Themed';
 type asistoProps = {
      people: [{ idUser: string; name: string; img?: string }];
      total: number | string;
+     closeModal: (n: boolean) => void;
      margin?: number | string;
      marginTop?: number | string;
      marginLeft?: number | string;
@@ -16,16 +17,20 @@ type asistoProps = {
 export function People({
      people,
      total,
+     closeModal,
      margin,
      marginTop,
      marginLeft,
      marginRight,
      marginBottom,
 }: asistoProps) {
+     // REPARAR ESTE ERROR, LOS PARAMETROS NO SE ESTAN ENVIANDO A PEOPLESCREEN
      const navigation = useNavigation();
      return (
           <Pressable
                onPress={() => {
+                    // SACAR ESTE CARRAR MODAL, ES TEMPORAL PARA QUE NO SE ROMPA
+                    closeModal(false);
                     navigation.navigate('PeopleScreen', people);
                }}
                style={{
