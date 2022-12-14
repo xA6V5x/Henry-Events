@@ -1,20 +1,26 @@
 // import axios from 'axios';
 // import { useEffect } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import CardFavorites from '../components/CardFavorites';
-import { NavBar } from '../components/NavBar';
-import { View } from '../components/Themed';
-import { TitleDivision } from '../components/TitleDivision';
+import Card from '../components/Card';
+import { NavBar } from './NavBar';
+import { Text, View } from '../components/Themed';
+import { TitleDivision } from './TitleDivision';
 import { RootStackScreenProps } from '../types';
 
-export default function Favorites({ navigation }: RootStackScreenProps<'Favorites'>) {
+type datesContainerProps = {
+     name: string;
+     endpoint: string;
+     navigation: any;
+};
+
+export function DatesContainer({ name, endpoint, navigation }: datesContainerProps) {
      const infoHenry = [
           {
                id: '1213',
                date: '5',
                mounth: 'enero',
                title: 'Buenos Aires Bar Oculto 21hs',
-               favorites: true,
+               favorites: false,
                description:
                     'Hola chicos, nos encontraremos el día 20/10/2022 por la noche para celebrar año nuevo',
                link: 'https://goo.gl/maps/dGWai2KJmp24dp1F6',
@@ -23,13 +29,8 @@ export default function Favorites({ navigation }: RootStackScreenProps<'Favorite
                     name: 'Agustin Ojeda',
                },
                people: [
-                    { idUser: 'asdaasdsd', name: 'Juan' },
                     { idUser: 'asdasd', name: 'Juan' },
-                    { idUser: 'asdasasd', name: 'Juan' },
-                    { idUser: 'asdaasdsd', name: 'Juan' },
-                    { idUser: 'asdaasdsd', name: 'Juan' },
-                    { idUser: 'asdaFsd', name: 'Juan' },
-                    { idUser: 'asdaASsqd', name: 'Pablo' },
+                    { idUser: 'asdasqd', name: 'Pablo' },
                ],
                comments: [
                     {
@@ -38,33 +39,10 @@ export default function Favorites({ navigation }: RootStackScreenProps<'Favorite
                          name: 'Juan',
                          comment: 'Buenisimo tilin',
                     },
-                    {
-                         idComment: 'asdasdadahsd',
-                         idUser: 'asdasdcasq1',
-                         name: 'Uli',
-                         comment: 'Habrá enanos? Sino no voy',
-                    },
-                    {
-                         idComment: 'asdgasdasasd',
-                         idUser: 'asdasdcasq1',
-                         name: 'Chino',
-                         comment: 'okaa',
-                    },
-                    {
-                         idComment: 'asdasdashasd',
-                         idUser: 'asdasdcasq1',
-                         name: 'Rebe',
-                         comment: 'okii',
-                    },
-                    {
-                         idComment: 'asdasdahsasd',
-                         idUser: 'asdasdcasq1',
-                         name: 'Mary',
-                         comment: 'dalee, nos vemos',
-                    },
                ],
           },
      ];
+
      //  useEffect(() => {
      //       axios.get(endpoint);
      //  });
@@ -75,10 +53,10 @@ export default function Favorites({ navigation }: RootStackScreenProps<'Favorite
                <SafeAreaView style={styles.scroll_container}>
                     <ScrollView style={styles.scroll}>
                          <View style={styles.cards_container}>
-                              <TitleDivision title="Favorites" />
+                              <TitleDivision title={name} />
                               {infoHenry.map((data) => {
                                    return (
-                                        <CardFavorites
+                                        <Card
                                              navigation={navigation}
                                              key={data.id}
                                              date={data.date}

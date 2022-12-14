@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { Image, Pressable, StyleSheet } from 'react-native';
-import { Text, View } from '../components/Themed';
+import { View } from '../components/Themed';
 import { SvgXml } from 'react-native-svg';
 import infoNav from '../info/NavBar.js';
 
-type nameRoute = {
-     name: string;
-};
+type nameRoute = { name: string };
 
-export default function NavBar() {
-     const navigation = useNavigation();
+export function NavBar(navigation: any) {
      const [icon, setIcon] = useState('Home');
 
      const handleClick = ({ name }: nameRoute) => {
           setIcon(name);
-          navigation.navigate(name);
+          // navigation.navigate(name);
+          navigation.navigation.push(name);
      };
 
      const xml = `<svg width="43" height="38" viewBox="0 0 43 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -26,7 +23,7 @@ export default function NavBar() {
 
      return (
           <View style={styles.container}>
-               <SvgXml xml={xml} width="100%" height="8%" style={styles.iconCompany} />
+               <SvgXml xml={xml} width="100%" height="7%" style={styles.iconCompany} />
                {infoNav.map((data) => {
                     return (
                          <Pressable
@@ -56,19 +53,19 @@ export default function NavBar() {
                               {data.name === 'Meetings' && (
                                    <Image
                                         source={require('../assets/navIcons/meetings.png')}
-                                        style={{ width: 50, height: 50, marginTop: '10%' }}
+                                        style={{ width: 45, height: 45, marginTop: '10%' }}
                                    />
                               )}
                               {data.name === 'Favorites' && (
                                    <Image
                                         source={require('../assets/navIcons/favs.png')}
-                                        style={{ width: 40, height: 40, marginTop: '20%' }}
+                                        style={{ width: 35, height: 35, marginTop: '20%' }}
                                    />
                               )}
                               {data.name === 'Settings' && (
                                    <Image
                                         source={require('../assets/navIcons/settings.png')}
-                                        style={{ width: 40, height: 40, marginTop: '25%' }}
+                                        style={{ width: 37, height: 37, marginTop: '25%' }}
                                    />
                               )}
                          </Pressable>
@@ -82,27 +79,18 @@ const styles = StyleSheet.create({
      container: {
           // position: 'absolute',
           // paddingTop: '50%',
+          // zIndex: 100,
           paddingTop: '5%',
           height: '100%',
-          width: '20%',
+          width: '16%',
           backgroundColor: '#FFFF01',
-          zIndex: 100,
           alignItems: 'center',
      },
      iconCompany: {
           marginLeft: '3%',
      },
      icon: {
-          marginTop: '10%',
+          marginTop: '16%',
           alignItems: 'center',
-     },
-     title: {
-          fontSize: 20,
-          fontWeight: 'bold',
-     },
-     separator: {
-          marginVertical: 30,
-          height: 1,
-          width: '80%',
      },
 });

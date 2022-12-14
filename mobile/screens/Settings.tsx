@@ -1,25 +1,28 @@
 import { Pressable, StyleSheet } from 'react-native';
-import NavBar from '../components/NavBar';
+import { NavBar } from '../components/NavBar';
 import { Text, View } from '../components/Themed';
+import { TitleDivision } from '../components/TitleDivision';
+import { RootStackScreenProps } from '../types';
 
-export default function Settings() {
+export default function Settings({ navigation }: RootStackScreenProps<'Settings'>) {
      const options = ['Nick Name', 'Profile Image', 'Dark Mood', 'Log Out'];
 
      return (
           <View style={styles.container}>
-               <NavBar />
+               <NavBar navigation={navigation} />
                <View style={styles.cards_container}>
-                    <Text style={styles.title}>Settings</Text>
+                    <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
                          {options.map((data) => {
                               return (
                                    <Pressable
                                         key={data}
                                         style={({ pressed }) => ({
+                                             ...styles.option,
                                              opacity: pressed ? 0.5 : 1,
                                         })}
                                    >
-                                        <Text style={styles.option}>{data}</Text>
+                                        <Text style={styles.option_text}>{data}</Text>
                                    </Pressable>
                               );
                          })}
@@ -38,16 +41,11 @@ const styles = StyleSheet.create({
           flex: 1,
           alignItems: 'center',
      },
-     title: {
-          margin: 30,
-          marginBottom: 23,
-          fontSize: 28,
-          fontWeight: 'bold',
-     },
      options_container: {
           position: 'relative',
           top: '2%',
-          right: '20%',
+          right: '22%',
      },
-     option: { marginBottom: 20, fontSize: 20 },
+     option: { marginBottom: 20 },
+     option_text: { fontSize: 20 },
 });

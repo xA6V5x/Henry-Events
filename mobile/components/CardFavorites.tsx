@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Modal } from 'react-native';
-import { View } from '../components/Themed';
+import { Pressable, StyleSheet, Modal, Image } from 'react-native';
+import { View } from './Themed';
 import ModalDescription from '../screens/ModalDescription';
 import { Date } from './Date';
 import { TitlePost } from './TitlePost';
@@ -26,7 +26,7 @@ type cardProps = {
      favorite: boolean;
 };
 
-export default function Card({
+export default function CardFavorites({
      navigation,
      idPost,
      title,
@@ -96,6 +96,22 @@ export default function Card({
                     >
                          <TitlePost title={title} width="56.3%" />
                     </View>
+                    <Pressable
+                         onPress={() => handleFavorite(isFavorite ? false : true)}
+                         style={styles.favorite_button}
+                    >
+                         {isFavorite === false ? (
+                              <Image
+                                   source={require('../assets/modalIcons/offFavorite.png')}
+                                   style={styles.favorite_img}
+                              />
+                         ) : (
+                              <Image
+                                   source={require('../assets/modalIcons/onFavorite.png')}
+                                   style={styles.favorite_img}
+                              />
+                         )}
+                    </Pressable>
                </Pressable>
           </View>
      );
