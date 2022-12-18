@@ -6,7 +6,7 @@ import { RootStackScreenProps } from '../types';
 export default function Home({ navigation }: RootStackScreenProps<'Home'>) {
      return (
           <View style={styles.container}>
-               <DatesContainer name="Home" endpoint="https://" navigation={navigation} />
+               <DatesContainer nameDivision="Home" endpoint="https://" navigation={navigation} />
           </View>
      );
 }

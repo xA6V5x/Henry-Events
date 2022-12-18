@@ -2,12 +2,17 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Image, Pressable, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { Assist } from '../components/Assist';
+import { BackArrow } from '../components/BackArrow';
+import { Comment } from '../components/Comment';
 import { Date } from '../components/Date';
 import { InputComment } from '../components/InputComment';
 import { People } from '../components/People';
 import { Text, View } from '../components/Themed';
 import { TitlePost } from '../components/TitlePost';
 import { User } from '../components/User';
+import Constants from 'expo-constants';
+import inicialDataPost from '../info/inicialDataPost';
+import infoPost from '../info/infoPost';
 
 type modalProps = {
      navigation: any;
@@ -38,21 +43,6 @@ type dataPost = {
 export default function ModalScreen({ navigation, route }: modalProps) {
      const { idPost, favoriteInicial } = route.params;
 
-     const inicialDataPost = {
-          title: '',
-          date: '',
-          mounth: '',
-          description: '',
-          link: '',
-          author: {
-               idUser: '',
-               name: '',
-               img: '',
-          },
-          people: [{ idUser: '', name: '', img: '' }],
-          comments: [{ idComment: '', idUser: '', name: '', img: '', comment: '' }],
-     };
-
      const [dataPost, setDataPost] = useState<dataPost>(inicialDataPost);
 
      const { title, date, mounth, description, link, author, people, comments }: dataPost =
@@ -66,10 +56,10 @@ export default function ModalScreen({ navigation, route }: modalProps) {
 
      useEffect(() => {
           (async () => {
-               const dataPost: dataPost = await axios
-                    .get(`https://${idPost}`)
-                    .then((json) => json.data);
-               setDataPost(dataPost);
+               //      const dataPost: dataPost = await axios
+               //           .get(`https://${idPost}`)
+               //           .then((json) => json.data);
+               setDataPost(infoPost);
           })();
      }, [idPost]);
 
@@ -79,23 +69,21 @@ export default function ModalScreen({ navigation, route }: modalProps) {
 
      const handleSetAssist = (boolean: boolean) => {
           setAssist(boolean);
-          //   axios.put('https://', boolean)
+          //   axios.put('https://', idUser)
      };
 
      return (
           <View style={styles.container}>
+               <View
+                    style={{
+                         height: Constants.statusBarHeight,
+                         backgroundColor: '#ECECEC',
+                    }}
+               ></View>
                <SafeAreaView style={styles.scroll_container}>
                     <ScrollView style={styles.scroll}>
                          <View style={styles.header_container}>
-                              <Pressable
-                                   onPress={() => navigation.goBack()}
-                                   style={styles.back_container}
-                              >
-                                   <Image
-                                        source={require('../assets/back.png')}
-                                        style={styles.back_img}
-                                   />
-                              </Pressable>
+                              <BackArrow navigation={navigation} />
                               <View style={styles.header}>
                                    <Date
                                         number={date}
@@ -124,12 +112,12 @@ export default function ModalScreen({ navigation, route }: modalProps) {
                               </View>
                               <View style={styles.description_container}>
                                    <User name={author.name} img={author.img} marginBottom={5} />
-
                                    <Text style={styles.description}>{description}</Text>
                               </View>
                               <View style={styles.people_assist}>
                                    <Assist isAssist={isAssist} setAssist={handleSetAssist} />
                                    <People
+                                        navigation={navigation}
                                         people={people}
                                         total={isAssist ? people.length + 1 : people.length}
                                    />
@@ -139,14 +127,11 @@ export default function ModalScreen({ navigation, route }: modalProps) {
                          <View style={styles.comments_container}>
                               {comments.map((data) => {
                                    return (
-                                        <View key={data.idComment} style={styles.comment}>
-                                             <User name={data.name} />
-                                             <View style={styles.comment_text}>
-                                                  <Text style={styles.description}>
-                                                       {data.comment}
-                                                  </Text>
-                                             </View>
-                                        </View>
+                                        <Comment
+                                             key={data.idComment}
+                                             name={data.name}
+                                             comment={data.comment}
+                                        />
                                    );
                               })}
                          </View>
@@ -180,12 +165,6 @@ const styles = StyleSheet.create({
           height: 'auto',
           backgroundColor: '#ECECEC',
           borderRadius: 12,
-     },
-     // ----------------------------//
-     back_container: { position: 'absolute', top: 5, left: 10, zIndex: 100 },
-     back_img: {
-          width: 30,
-          height: 30,
      },
      // ----------------------------//
      header: {
@@ -227,15 +206,5 @@ const styles = StyleSheet.create({
           flex: 1,
           width: '100%',
           alignItems: 'center',
-     },
-     comment: {
-          padding: 15,
-          backgroundColor: '#ECECEC',
-          width: '90%',
-          marginTop: 15,
-     },
-     comment_text: {
-          backgroundColor: '#ECECEC',
-          marginLeft: 45,
      },
 });

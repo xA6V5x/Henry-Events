@@ -9,7 +9,7 @@ export default function Settings({ navigation }: RootStackScreenProps<'Settings'
 
      return (
           <View style={styles.container}>
-               <NavBar navigation={navigation} />
+               <NavBar navigation={navigation} nameDivision="Settings" />
                <View style={styles.cards_container}>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>

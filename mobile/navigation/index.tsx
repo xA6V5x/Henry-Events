@@ -12,7 +12,7 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 
 // Screens
-import ModalScreen from '../screens/ModalScreen';
+import ModalScreen from '../screens/ModalPost';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import Home from '../screens/Home';
 import Talks from '../screens/Talks';
@@ -22,8 +22,6 @@ import Settings from '../screens/Settings';
 //
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
-import { NavBar } from '../components/NavBar';
-import ModalDescription from '../screens/ModalDescription';
 import PeopleScreen from '../screens/PeopleScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -73,15 +71,10 @@ function RootNavigator() {
                     component={NotFoundScreen}
                     options={{ title: 'Oops!' }}
                />
-               {/* <Stack.Group
-                    screenOptions={{ presentation: 'modal', animation: 'slide_from_bottom' }}
-               >
-                    <Stack.Screen name="Modal" component={ModalScreen} />
-               </Stack.Group> */}
                <Stack.Group
                     screenOptions={{ presentation: 'modal', animation: 'slide_from_bottom' }}
                >
-                    <Stack.Screen name="ModalDescription" component={ModalDescription} />
+                    <Stack.Screen name="ModalPost" component={ModalScreen} />
                </Stack.Group>
                <Stack.Group
                     screenOptions={{ presentation: 'modal', animation: 'slide_from_right' }}

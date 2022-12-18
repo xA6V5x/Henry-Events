@@ -1,12 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { Image, Pressable, StyleSheet, Text } from 'react-native';
+import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { View } from '../components/Themed';
-import { RootStackScreenProps } from '../types';
-import Constants from 'expo-constants';
 import { User } from '../components/User';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
 import { TitleDivision } from '../components/TitleDivision';
+import { BackArrow } from '../components/BackArrow';
 
 type peopleScreenProps = {
      navigation: any;
@@ -15,18 +14,17 @@ type peopleScreenProps = {
      };
 };
 
-export default function PeopleScreen(
-     // { navigation }: RootStackScreenProps<'PeopleScreen'>
-     { navigation, route }: peopleScreenProps
-) {
-     const people = route.params;
+export default function PeopleScreen({ navigation, route }: peopleScreenProps) {
+     const { people } = route.params;
 
      return (
           <View style={styles.container}>
                <SafeAreaView style={styles.scroll_container}>
                     <ScrollView style={styles.scroll}>
                          <StatusBar backgroundColor={'#ffff'} />
-                         <Pressable
+                         <BackArrow navigation={navigation} />
+                         {/* <TouchableOpacity
+                              activeOpacity={0.5}
                               onPress={() => navigation.goBack()}
                               style={styles.back_container}
                          >
@@ -34,7 +32,7 @@ export default function PeopleScreen(
                                    source={require('../assets/back.png')}
                                    style={styles.back_img}
                               />
-                         </Pressable>
+                         </TouchableOpacity> */}
                          <TitleDivision title="People" />
                          {people.map((data) => {
                               return (

@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
-import { Image, Pressable, StyleSheet } from 'react-native';
+import { Image, Pressable, StyleSheet, Text } from 'react-native';
 import { View } from '../components/Themed';
 import { SvgXml } from 'react-native-svg';
 import infoNav from '../info/NavBar.js';
 
+type navBarProps = {
+     navigation: any;
+     nameDivision: string;
+};
+
 type nameRoute = { name: string };
 
-export function NavBar(navigation: any) {
-     const [icon, setIcon] = useState('Home');
-
+export function NavBar({ navigation, nameDivision }: navBarProps) {
      const handleClick = ({ name }: nameRoute) => {
-          setIcon(name);
-          // navigation.navigate(name);
-          navigation.navigation.push(name);
+          nameDivision != name ? navigation.push(name) : null;
      };
 
      const xml = `<svg width="43" height="38" viewBox="0 0 43 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,41 +32,54 @@ export function NavBar(navigation: any) {
                               onPress={() => handleClick(data)}
                               style={styles.icon}
                          >
-                              {/* <Text
-                                   style={
-                                        icon === data.name ? { color: 'blue' } : { color: 'black' }
-                                   }
-                              >
-                                   {data.name}
-                              </Text> */}
                               {data.name === 'Home' && (
                                    <Image
-                                        source={require('../assets/navIcons/home.png')}
-                                        style={{ width: 35, height: 35, marginTop: '15%' }}
+                                        source={
+                                             data.name === nameDivision
+                                                  ? require('../assets/navIcons/onHome.png')
+                                                  : require('../assets/navIcons/offHome.png')
+                                        }
+                                        style={styles.iconHome}
                                    />
                               )}
                               {data.name === 'Talks' && (
                                    <Image
-                                        source={require('../assets/navIcons/talks.png')}
-                                        style={{ width: 50, height: 50, marginTop: '15%' }}
+                                        source={
+                                             data.name === nameDivision
+                                                  ? require('../assets/navIcons/onTalks.png')
+                                                  : require('../assets/navIcons/offTalks.png')
+                                        }
+                                        style={styles.iconTalks}
                                    />
                               )}
                               {data.name === 'Meetings' && (
                                    <Image
-                                        source={require('../assets/navIcons/meetings.png')}
-                                        style={{ width: 45, height: 45, marginTop: '10%' }}
+                                        source={
+                                             data.name === nameDivision
+                                                  ? require('../assets/navIcons/onMeetings.png')
+                                                  : require('../assets/navIcons/offMeetings.png')
+                                        }
+                                        style={styles.iconMeetings}
                                    />
                               )}
                               {data.name === 'Favorites' && (
                                    <Image
-                                        source={require('../assets/navIcons/favs.png')}
-                                        style={{ width: 35, height: 35, marginTop: '20%' }}
+                                        source={
+                                             data.name === nameDivision
+                                                  ? require('../assets/navIcons/onFavs.png')
+                                                  : require('../assets/navIcons/offFavs.png')
+                                        }
+                                        style={styles.iconFavs}
                                    />
                               )}
                               {data.name === 'Settings' && (
                                    <Image
-                                        source={require('../assets/navIcons/settings.png')}
-                                        style={{ width: 37, height: 37, marginTop: '25%' }}
+                                        source={
+                                             data.name === nameDivision
+                                                  ? require('../assets/navIcons/onSettings.png')
+                                                  : require('../assets/navIcons/offSettings.png')
+                                        }
+                                        style={styles.iconSettings}
                                    />
                               )}
                          </Pressable>
@@ -77,9 +91,6 @@ export function NavBar(navigation: any) {
 
 const styles = StyleSheet.create({
      container: {
-          // position: 'absolute',
-          // paddingTop: '50%',
-          // zIndex: 100,
           paddingTop: '5%',
           height: '100%',
           width: '16%',
@@ -93,4 +104,9 @@ const styles = StyleSheet.create({
           marginTop: '16%',
           alignItems: 'center',
      },
+     iconHome: { width: 35, height: 35, marginTop: '15%' },
+     iconTalks: { width: 50, height: 50, marginTop: '15%' },
+     iconMeetings: { width: 45, height: 45, marginTop: '10%' },
+     iconFavs: { width: 35, height: 35, marginTop: '20%' },
+     iconSettings: { width: 37, height: 37, marginTop: '25%' },
 });

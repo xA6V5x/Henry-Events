@@ -1,9 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
-import { Image, Pressable, StyleSheet } from 'react-native';
-import { Text } from './Themed';
+import { Image, Pressable, StyleSheet, Text } from 'react-native';
 
-type asistoProps = {
+type assistProps = {
+     navigation: any;
      people: { idUser: string; name: string; img?: string }[];
      total: number | string;
      closeModal?: (n: boolean) => void;
@@ -15,23 +13,19 @@ type asistoProps = {
 };
 
 export function People({
+     navigation,
      people,
      total,
-     closeModal,
      margin,
      marginTop,
      marginLeft,
      marginRight,
      marginBottom,
-}: asistoProps) {
-     // REPARAR ESTE ERROR, LOS PARAMETROS NO SE ESTAN ENVIANDO A PEOPLESCREEN
-     const navigation = useNavigation();
+}: assistProps) {
      return (
           <Pressable
                onPress={() => {
-                    // SACAR ESTE CARRAR MODAL, ES TEMPORAL PARA QUE NO SE ROMPA
-                    closeModal ? closeModal(false) : null;
-                    navigation.push('PeopleScreen', people);
+                    navigation.push('PeopleScreen', { people });
                }}
                style={{
                     ...styles.container,

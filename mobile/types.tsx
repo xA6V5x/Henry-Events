@@ -14,15 +14,14 @@ declare global {
 }
 
 export type RootStackParamList = {
-     Modal: undefined;
-     ModalDescription: undefined;
-     PeopleScreen: undefined;
-     NotFound: undefined;
      Home: undefined;
      Talks: undefined;
      Meetings: undefined;
      Favorites: undefined;
      Settings: undefined;
+     ModalPost: undefined;
+     PeopleScreen: undefined;
+     NotFound: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<

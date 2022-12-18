@@ -1,10 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Modal, Image } from 'react-native';
 import { View } from './Themed';
-import ModalDescription from '../screens/ModalDescription';
 import { Date } from './Date';
 import { TitlePost } from './TitlePost';
 
@@ -14,15 +11,6 @@ type cardProps = {
      title: string;
      date: number | string;
      mounth: string;
-     description: string;
-     link?: string;
-     author: {
-          idUser: string;
-          name: string;
-          img?: string;
-     };
-     people: [{ idUser: string; name: string; img?: string }];
-     comments: [{ idComment: string; idUser: string; name: string; img?: string; comment: string }];
      favorite: boolean;
 };
 
@@ -32,15 +20,9 @@ export default function CardFavorites({
      title,
      date,
      mounth,
-     description,
-     link,
-     author,
-     people,
-     comments,
      favorite,
 }: cardProps) {
      const [isFavorite, setFavorite] = useState(favorite);
-     const [view, setView] = useState(false);
 
      const handleFavorite = (boolean: boolean) => {
           setFavorite(boolean);
@@ -49,36 +31,12 @@ export default function CardFavorites({
 
      return (
           <View>
-               <Modal transparent visible={view} animationType="slide">
-                    <StatusBar backgroundColor="#ECECEC" />
-                    <ModalDescription
-                         navigation={navigation}
-                         idPost={idPost}
-                         title={title}
-                         date={date}
-                         mounth={mounth}
-                         description={description}
-                         link={link}
-                         author={author}
-                         people={people}
-                         comments={comments}
-                         // ----------------//
-                         isFavorite={isFavorite}
-                         setFavorite={setFavorite}
-                         closeModal={setView}
-                    />
-               </Modal>
                <Pressable
-                    onPress={
-                         () => setView(true)
-                         // navigation.navigate('Modal', {
-                         //      date,
-                         //      mounth,
-                         //      title,
-                         //      isFavorite,
-                         //      setFavorite,
-                         //      setFavorite: handleFavorite,
-                         // })
+                    onPress={() =>
+                         navigation.push('ModalPost', {
+                              idPost,
+                              favoriteInicial: isFavorite,
+                         })
                     }
                     style={({ pressed }) => ({
                          ...styles.container,

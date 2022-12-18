@@ -6,7 +6,11 @@ import { RootStackScreenProps } from '../types';
 export default function Meetings({ navigation }: RootStackScreenProps<'Meetings'>) {
      return (
           <View style={styles.container}>
-               <DatesContainer name="Meetings" endpoint="https://" navigation={navigation} />
+               <DatesContainer
+                    nameDivision="Meetings"
+                    endpoint="https://"
+                    navigation={navigation}
+               />
           </View>
      );
 }
