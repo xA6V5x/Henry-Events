@@ -21,24 +21,20 @@ import { HenryEventsLogo } from '../components/HenryEventsLogo';
 const reviewSchema = yup.object({
      nickName: yup.string().required(),
      email: yup.string().required().email(),
-     repeatEmail: yup.string().required().email(),
      password: yup.string().required(),
-     repeatPassword: yup.string().required(),
+     confirmPassword: yup.string().required(),
 });
 
 type singupProps = {
      nickName: string;
-     repeatEmail: string;
      email: string;
-     repeatPassword: string;
+     confirmPassword: string;
      password: string;
 };
 
 export function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'>) {
      const submit = async (values: singupProps) => {
-          if (values.email !== values.repeatEmail) {
-               return Alert.alert('Emails do not match');
-          } else if (values.password !== values.repeatPassword) {
+          if (values.password !== values.confirmPassword) {
                return Alert.alert('Passwords do not match');
           }
           try {
@@ -67,9 +63,8 @@ export function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'
                               initialValues={{
                                    nickName: '',
                                    email: '',
-                                   repeatEmail: '',
                                    password: '',
-                                   repeatPassword: '',
+                                   confirmPassword: '',
                               }}
                               validationSchema={reviewSchema}
                               onSubmit={submit}
@@ -106,19 +101,6 @@ export function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'
                                                        formikProps.errors.password} */}
                                              </Text>
                                              <TextInput
-                                                  placeholder="Repeat email"
-                                                  onChangeText={formikProps.handleChange(
-                                                       'repeatEmail'
-                                                  )}
-                                                  value={formikProps.values.repeatEmail}
-                                                  onBlur={formikProps.handleBlur('repeatEmail')}
-                                                  style={styles.input}
-                                             />
-                                             <Text style={styles.text_error}>
-                                                  {/* {formikProps.touched.password &&
-                                                       formikProps.errors.password} */}
-                                             </Text>
-                                             <TextInput
                                                   placeholder="Password"
                                                   onChangeText={formikProps.handleChange(
                                                        'password'
@@ -132,11 +114,11 @@ export function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'
                                                        formikProps.errors.password} */}
                                              </Text>
                                              <TextInput
-                                                  placeholder="Repeat password"
+                                                  placeholder="Confirm password"
                                                   onChangeText={formikProps.handleChange(
-                                                       'repeatPassword'
+                                                       'confirmPassword'
                                                   )}
-                                                  value={formikProps.values.repeatPassword}
+                                                  value={formikProps.values.confirmPassword}
                                                   secureTextEntry={true}
                                                   style={styles.input}
                                              />
