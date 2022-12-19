@@ -1,5 +1,4 @@
-import { Image, StyleSheet } from 'react-native';
-import { Text, View } from './Themed';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 type userContainerProps = {
      name: string;

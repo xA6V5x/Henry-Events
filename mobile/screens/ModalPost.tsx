@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           height: 'auto',
           backgroundColor: '#ECECEC',
-          borderRadius: 12,
      },
      // ----------------------------//
      header: {
@@ -175,7 +174,6 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           height: 'auto',
           backgroundColor: '#ECECEC',
-          borderRadius: 12,
      },
      favorite_img: {
           width: 35,
@@ -201,6 +199,7 @@ const styles = StyleSheet.create({
      separator: {
           height: 2,
           width: '100%',
+          backgroundColor: '#A6A6A6',
      },
      // ----------------------------//
      comments_container: {

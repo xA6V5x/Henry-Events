@@ -1,9 +1,9 @@
 // import axios from 'axios';
 // import { useEffect } from 'react';
-import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+// import { View } from '../components/Themed';
 import CardFavorites from '../components/CardFavorites';
 import { NavBar } from '../components/NavBar';
-import { View } from '../components/Themed';
 import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
 import infoHenry from '../info/infoHenryPosts';

@@ -1,5 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { Text, View } from './Themed';
+import { StyleSheet, Text, View } from 'react-native';
 
 type datesContainerProps = {
      title: string;
