@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
           width: '100%',
      },
      cards_container: {
-          alignItems: 'center',
           width: '100%',
+          alignItems: 'center',
+          backgroundColor: '#ffff',
      },
 });

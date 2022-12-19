@@ -59,5 +59,6 @@ const styles = StyleSheet.create({
      cards_container: {
           alignItems: 'center',
           width: '100%',
+          backgroundColor: '#ffff',
      },
 });
