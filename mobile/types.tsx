@@ -14,6 +14,8 @@ declare global {
 }
 
 export type RootStackParamList = {
+     LoginScreen: undefined;
+     SingupScreen: undefined;
      Home: undefined;
      Talks: undefined;
      Meetings: undefined;

@@ -13,6 +13,8 @@ const linking: LinkingOptions<RootStackParamList> = {
      prefixes: [Linking.createURL('/')],
      config: {
           screens: {
+               LoginScreen: 'LoginScreen',
+               SingupScreen: 'SingupScreen',
                Home: 'Home',
                Talks: 'Talks',
                Meetings: 'Meetings',

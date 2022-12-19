@@ -23,6 +23,9 @@ import Settings from '../screens/Settings';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import PeopleScreen from '../screens/PeopleScreen';
+import { LoginScreen } from '../screens/LoginScreen';
+import { SingupScreen } from '../screens/SingupScreen';
+import { View } from '../components/Themed';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
      return (
@@ -30,7 +33,6 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
                linking={LinkingConfiguration}
                theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
           >
-               {/* <NavBar /> */}
                <RootNavigator />
           </NavigationContainer>
      );
@@ -41,6 +43,16 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
      return (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
+               <Stack.Screen
+                    name="LoginScreen"
+                    component={LoginScreen}
+                    options={{ headerShown: false, animation: 'none' }}
+               />
+               <Stack.Screen
+                    name="SingupScreen"
+                    component={SingupScreen}
+                    options={{ headerShown: false }}
+               />
                <Stack.Screen
                     name="Home"
                     component={Home}
