@@ -1,3 +1,4 @@
+import Constants from 'expo-constants';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { NavBar } from '../components/NavBar';
 // import { Text, View } from '../components/Themed';
@@ -9,6 +10,7 @@ export default function Settings({ navigation }: RootStackScreenProps<'Settings'
           <View style={styles.container}>
                <NavBar navigation={navigation} nameDivision="Settings" />
                <View style={styles.cards_container}>
+                    <View style={{ height: Constants.statusBarHeight }}></View>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
                          <Pressable

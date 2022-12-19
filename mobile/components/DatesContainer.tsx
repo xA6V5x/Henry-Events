@@ -1,5 +1,6 @@
 // import axios from 'axios';
 // import { useEffect } from 'react';
+import Constants from 'expo-constants';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Card from '../components/Card';
 import { NavBar } from './NavBar';
@@ -24,6 +25,7 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: datesCont
                <SafeAreaView style={styles.scroll_container}>
                     <ScrollView style={styles.scroll}>
                          <View style={styles.cards_container}>
+                              <View style={{ height: Constants.statusBarHeight }}></View>
                               <TitleDivision title={nameDivision} />
                               {infoHenry.map((data) => {
                                    return (

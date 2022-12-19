@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Image, Pressable, StyleSheet, Text } from 'react-native';
+import Constants from 'expo-constants';
+import { Image, Pressable, StyleSheet } from 'react-native';
 import { View } from '../components/Themed';
 import { SvgXml } from 'react-native-svg';
 import infoNav from '../info/NavBar.js';
@@ -24,6 +24,7 @@ export function NavBar({ navigation, nameDivision }: navBarProps) {
 
      return (
           <View style={styles.container}>
+               <View style={{ height: Constants.statusBarHeight }}></View>
                <SvgXml xml={xml} width="100%" height="7%" style={styles.iconCompany} />
                {infoNav.map((data) => {
                     return (
@@ -91,7 +92,7 @@ export function NavBar({ navigation, nameDivision }: navBarProps) {
 
 const styles = StyleSheet.create({
      container: {
-          paddingTop: '5%',
+          paddingTop: '4%',
           height: '100%',
           width: '16%',
           backgroundColor: '#FFFF01',

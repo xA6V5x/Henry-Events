@@ -1,5 +1,6 @@
 // import axios from 'axios';
 // import { useEffect } from 'react';
+import Constants from 'expo-constants';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 // import { View } from '../components/Themed';
 import CardFavorites from '../components/CardFavorites';
@@ -19,6 +20,7 @@ export default function Favorites({ navigation }: RootStackScreenProps<'Favorite
                <SafeAreaView style={styles.scroll_container}>
                     <ScrollView style={styles.scroll}>
                          <View style={styles.cards_container}>
+                              <View style={{ height: Constants.statusBarHeight }}></View>
                               <TitleDivision title="Favorites" />
                               {infoHenry.map((data) => {
                                    return (
