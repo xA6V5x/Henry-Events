@@ -32,7 +32,7 @@ type singupProps = {
      password: string;
 };
 
-export function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'>) {
+export default function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'>) {
      const submit = async (values: singupProps) => {
           if (values.password !== values.confirmPassword) {
                return Alert.alert('Passwords do not match');

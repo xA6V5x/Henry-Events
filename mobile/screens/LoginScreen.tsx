@@ -28,7 +28,7 @@ type loginProps = {
      password: string;
 };
 
-export function LoginScreen({ navigation }: RootStackScreenProps<'LoginScreen'>) {
+export default function LoginScreen({ navigation }: RootStackScreenProps<'LoginScreen'>) {
      const submit = async (values: loginProps) => {
           navigation.push('Home');
           // () => navigation.replace('Home')

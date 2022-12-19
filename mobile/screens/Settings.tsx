@@ -5,27 +5,48 @@ import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
 
 export default function Settings({ navigation }: RootStackScreenProps<'Settings'>) {
-     const options = ['Nick Name', 'Profile Image', 'Dark Mood', 'Log Out'];
-
      return (
           <View style={styles.container}>
                <NavBar navigation={navigation} nameDivision="Settings" />
                <View style={styles.cards_container}>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
-                         {options.map((data) => {
-                              return (
-                                   <Pressable
-                                        key={data}
-                                        style={({ pressed }) => ({
-                                             ...styles.option,
-                                             opacity: pressed ? 0.5 : 1,
-                                        })}
-                                   >
-                                        <Text style={styles.option_text}>{data}</Text>
-                                   </Pressable>
-                              );
-                         })}
+                         <Pressable
+                              // onPress={() => navigation.push('LoginScreen')}
+                              style={({ pressed }) => ({
+                                   ...styles.option,
+                                   opacity: pressed ? 0.5 : 1,
+                              })}
+                         >
+                              <Text style={styles.option_text}>Nick Name</Text>
+                         </Pressable>
+                         <Pressable
+                              // onPress={() => navigation.push('LoginScreen')}
+                              style={({ pressed }) => ({
+                                   ...styles.option,
+                                   opacity: pressed ? 0.5 : 1,
+                              })}
+                         >
+                              <Text style={styles.option_text}>Profile Image</Text>
+                         </Pressable>
+                         <Pressable
+                              // onPress={() => navigation.push('LoginScreen')}
+                              style={({ pressed }) => ({
+                                   ...styles.option,
+                                   opacity: pressed ? 0.5 : 1,
+                              })}
+                         >
+                              <Text style={styles.option_text}>Dark Mood</Text>
+                         </Pressable>
+                         <Pressable
+                              onPress={() => navigation.push('LoginScreen')}
+                              style={({ pressed }) => ({
+                                   ...styles.option,
+                                   opacity: pressed ? 0.5 : 1,
+                              })}
+                         >
+                              <Text style={styles.option_text}>Log Out</Text>
+                         </Pressable>
                     </View>
                </View>
           </View>

@@ -23,8 +23,8 @@ import Settings from '../screens/Settings';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import PeopleScreen from '../screens/PeopleScreen';
-import { LoginScreen } from '../screens/LoginScreen';
-import { SingupScreen } from '../screens/SingupScreen';
+import LoginScreen from '../screens/LoginScreen';
+import SingupScreen from '../screens/SingupScreen';
 import { View } from '../components/Themed';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
