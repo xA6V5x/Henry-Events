@@ -1,6 +1,6 @@
-import { Pressable, StyleSheet } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { NavBar } from '../components/NavBar';
-import { Text, View } from '../components/Themed';
+// import { Text, View } from '../components/Themed';
 import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
 
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
      container: {
           flex: 1,
           flexDirection: 'row',
+          backgroundColor: '#ffff',
      },
      cards_container: {
           flex: 1,

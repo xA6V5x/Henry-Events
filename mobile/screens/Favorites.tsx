@@ -44,12 +44,15 @@ const styles = StyleSheet.create({
      container: {
           flex: 1,
           flexDirection: 'row',
+          backgroundColor: '#ffff',
      },
      scroll_container: {
           flex: 1,
+          backgroundColor: '#ffff',
      },
      scroll: {
           width: '100%',
+          backgroundColor: '#ffff',
      },
      cards_container: {
           width: '100%',

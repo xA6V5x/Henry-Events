@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Modal, Image } from 'react-native';
-import { View } from './Themed';
+import { Pressable, StyleSheet, Image, View } from 'react-native';
 import { Date } from './Date';
 import { TitlePost } from './TitlePost';
 
