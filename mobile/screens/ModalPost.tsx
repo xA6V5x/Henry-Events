@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Image, Pressable, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { Image, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+// import { View } from '../components/Themed';
 import { Assist } from '../components/Assist';
 import { BackArrow } from '../components/BackArrow';
 import { Comment } from '../components/Comment';
 import { Date } from '../components/Date';
 import { InputComment } from '../components/InputComment';
 import { People } from '../components/People';
-import { Text, View } from '../components/Themed';
 import { TitlePost } from '../components/TitlePost';
 import { User } from '../components/User';
 import Constants from 'expo-constants';
@@ -123,7 +123,7 @@ export default function ModalScreen({ navigation, route }: modalProps) {
                                    />
                               </View>
                          </View>
-                         <View style={styles.separator} lightColor="#A6A6A6" darkColor="#A6A6A6" />
+                         <View style={styles.separator} />
                          <View style={styles.comments_container}>
                               {comments.map((data) => {
                                    return (
@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
      container: {
           flex: 1,
           zIndex: 100,
+          backgroundColor: '#ffff',
      },
      scroll_container: {
           flex: 1,
@@ -206,5 +207,6 @@ const styles = StyleSheet.create({
           flex: 1,
           width: '100%',
           alignItems: 'center',
+          backgroundColor: '#ffff',
      },
 });

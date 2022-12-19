@@ -61,7 +61,7 @@ export function LoginScreen({ navigation }: RootStackScreenProps<'LoginScreen'>)
                <ScrollView style={{ width: '100%' }}>
                     <View
                          style={{
-                              marginTop: '12%',
+                              marginTop: '20%',
                               marginBottom: 8,
                          }}
                     >

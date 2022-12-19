@@ -29,11 +29,6 @@ export default function Favorites({ navigation }: RootStackScreenProps<'Favorite
                                              mounth={data.mounth}
                                              title={data.title}
                                              idPost={data.id}
-                                             description={data.description}
-                                             link={data.link}
-                                             author={data.author}
-                                             people={data.people}
-                                             comments={data.comments}
                                              favorite={data.favorites}
                                         />
                                    );

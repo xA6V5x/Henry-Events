@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { View } from '../components/Themed';
+import { StyleSheet, View } from 'react-native';
+// import { View } from '../components/Themed';
 import { User } from '../components/User';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -21,18 +20,7 @@ export default function PeopleScreen({ navigation, route }: peopleScreenProps) {
           <View style={styles.container}>
                <SafeAreaView style={styles.scroll_container}>
                     <ScrollView style={styles.scroll}>
-                         <StatusBar backgroundColor={'#ffff'} />
                          <BackArrow navigation={navigation} />
-                         {/* <TouchableOpacity
-                              activeOpacity={0.5}
-                              onPress={() => navigation.goBack()}
-                              style={styles.back_container}
-                         >
-                              <Image
-                                   source={require('../assets/back.png')}
-                                   style={styles.back_img}
-                              />
-                         </TouchableOpacity> */}
                          <TitleDivision title="People" />
                          {people.map((data) => {
                               return (
@@ -51,6 +39,7 @@ const styles = StyleSheet.create({
      container: {
           flex: 1,
           zIndex: 100,
+          backgroundColor: '#ffff',
      },
      scroll_container: {
           flex: 1,

@@ -1,7 +1,7 @@
 {
      "expo": {
           "name": "Henry Events",
-          "slug": "Henry Events",
+          "slug": "henry-events",
           "version": "1.0.0",
           "orientation": "portrait",
           "icon": "./assets/images/iconApp.png",

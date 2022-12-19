@@ -1,5 +1,5 @@
-import { Image, StyleSheet, TextInput, TouchableWithoutFeedback } from 'react-native';
-import { Text, View } from './Themed';
+import { Image, StyleSheet, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+// import { Text, View } from './Themed';
 
 type inputCommentProps = {
      commentMessage: string;
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
           maxHeight: 100,
           borderWidth: 1,
           borderRadius: 12,
-          backgroundColor: '#fff',
+          backgroundColor: '#ffff',
      },
      send_icon: {
           marginLeft: 10,
