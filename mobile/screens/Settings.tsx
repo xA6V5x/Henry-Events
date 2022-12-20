@@ -38,7 +38,7 @@ export default function Settings({ navigation }: RootStackScreenProps<'Settings'
                                    opacity: pressed ? 0.5 : 1,
                               })}
                          >
-                              <Text style={styles.option_text}>Dark Mood</Text>
+                              <Text style={styles.option_text}>Dark Mode</Text>
                          </Pressable>
                          <Pressable
                               onPress={() => navigation.push('LoginScreen')}
