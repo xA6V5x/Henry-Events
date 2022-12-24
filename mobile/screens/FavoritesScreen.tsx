@@ -7,7 +7,7 @@ import CardFavorites from '../components/CardFavorites';
 import { NavBar } from '../components/NavBar';
 import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
-import infoHenry from '../info/infoHenryPosts';
+import infoHenry from '../constants/infoHenryPosts';
 
 export default function FavoritesScreen({ navigation }: RootStackScreenProps<'Favorites'>) {
      //  useEffect(() => {

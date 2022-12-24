@@ -11,8 +11,8 @@ import { People } from '../components/People';
 import { TitlePost } from '../components/TitlePost';
 import { User } from '../components/User';
 import Constants from 'expo-constants';
-import inicialDataPost from '../info/inicialDataPost';
-import infoPost from '../info/infoPost';
+import inicialDataPost from '../constants/inicialDataPost';
+import infoPost from '../constants/infoPost';
 
 type modalProps = {
      navigation: any;

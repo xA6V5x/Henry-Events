@@ -6,7 +6,7 @@ import Card from '../components/Card';
 import { NavBar } from './NavBar';
 // import { View } from '../components/Themed';
 import { TitleDivision } from './TitleDivision';
-import infoHenry from '../info/infoHenryPosts';
+import infoHenry from '../constants/infoHenryPosts';
 
 type datesContainerProps = {
      nameDivision: string;

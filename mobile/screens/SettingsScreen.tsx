@@ -5,6 +5,7 @@ import { SettingsOptions } from '../components/SettingsOptions';
 // import { Text, View } from '../components/Themed';
 import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
+import Options from '../constants/SettingsOptions';
 
 export default function SettingsScreen({ navigation }: RootStackScreenProps<'Settings'>) {
      return (
@@ -14,26 +15,15 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
                     <View style={{ height: Constants.statusBarHeight }}></View>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
-                         <SettingsOptions
-                              navigation={navigation}
-                              goTo="EditNick"
-                              name="Nick Name"
-                         />
-                         <SettingsOptions
-                              navigation={navigation}
-                              goTo="EditNick"
-                              name="Profile Image"
-                         />
-                         <SettingsOptions
-                              navigation={navigation}
-                              goTo="EditNick"
-                              name="Dark Mode"
-                         />
-                         <SettingsOptions
-                              navigation={navigation}
-                              goTo="LoginScreen"
-                              name="Log Out"
-                         />
+                         {Options.map((option) => {
+                              return (
+                                   <SettingsOptions
+                                        navigation={navigation}
+                                        goTo={option.goTo}
+                                        name={option.name}
+                                   />
+                              );
+                         })}
                     </View>
                </View>
           </View>

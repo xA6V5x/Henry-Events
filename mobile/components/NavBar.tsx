@@ -2,7 +2,7 @@ import Constants from 'expo-constants';
 import { Image, Pressable, StyleSheet } from 'react-native';
 import { View } from '../components/Themed';
 import { SvgXml } from 'react-native-svg';
-import infoNav from '../info/NavBar.js';
+import infoNav from '../constants/NavBar.js';
 
 type navBarProps = {
      navigation: any;
