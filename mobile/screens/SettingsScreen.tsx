@@ -1,5 +1,5 @@
 import Constants from 'expo-constants';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NavBar } from '../components/NavBar';
 import { SettingsOptions } from '../components/SettingsOptions';
 // import { Text, View } from '../components/Themed';
