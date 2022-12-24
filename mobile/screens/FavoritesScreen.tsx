@@ -9,7 +9,7 @@ import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
 import infoHenry from '../info/infoHenryPosts';
 
-export default function Favorites({ navigation }: RootStackScreenProps<'Favorites'>) {
+export default function FavoritesScreen({ navigation }: RootStackScreenProps<'Favorites'>) {
      //  useEffect(() => {
      //       axios.get(endpoint);
      //  });

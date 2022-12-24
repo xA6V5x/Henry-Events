@@ -3,10 +3,10 @@ import { DatesContainer } from '../components/DatesContainer';
 import { View } from '../components/Themed';
 import { RootStackScreenProps } from '../types';
 
-export default function Home({ navigation }: RootStackScreenProps<'Home'>) {
+export default function TalksScreen({ navigation }: RootStackScreenProps<'Talks'>) {
      return (
           <View style={styles.container}>
-               <DatesContainer nameDivision="Home" endpoint="https://" navigation={navigation} />
+               <DatesContainer nameDivision="Talks" endpoint="https://" navigation={navigation} />
           </View>
      );
 }

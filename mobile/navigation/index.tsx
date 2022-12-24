@@ -14,11 +14,11 @@ import useColorScheme from '../hooks/useColorScheme';
 // Screens
 import ModalScreen from '../screens/ModalPost';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import Home from '../screens/Home';
-import Talks from '../screens/Talks';
-import Meetings from '../screens/Meetings';
-import Favorites from '../screens/Favorites';
-import Settings from '../screens/Settings';
+import Home from '../screens/HomeScreen';
+import Talks from '../screens/TalksScreen';
+import Meetings from '../screens/MeetingsScreen';
+import Favorites from '../screens/FavoritesScreen';
+import Settings from '../screens/SettingsScreen';
 //
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
