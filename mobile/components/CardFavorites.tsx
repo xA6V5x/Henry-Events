@@ -29,48 +29,46 @@ export default function CardFavorites({
      };
 
      return (
-          <View>
-               <Pressable
-                    onPress={() =>
-                         navigation.push('ModalPost', {
-                              idPost,
-                              favoriteInicial: isFavorite,
-                         })
-                    }
-                    style={({ pressed }) => ({
-                         ...styles.container,
-                         transform: pressed ? [{ scale: 0.97 }] : [{ scale: 1 }],
-                    })}
+          <Pressable
+               onPress={() =>
+                    navigation.push('ModalPost', {
+                         idPost,
+                         favoriteInicial: isFavorite,
+                    })
+               }
+               style={({ pressed }) => ({
+                    ...styles.container,
+                    transform: pressed ? [{ scale: 0.97 }] : [{ scale: 1 }],
+               })}
+          >
+               <Date number={date} mounth={mounth} margin={15} marginRight={0} />
+               <View
+                    style={{
+                         flex: 1,
+                         alignItems: 'center',
+                         justifyContent: 'center',
+                         backgroundColor: '#ECECEC',
+                    }}
                >
-                    <Date number={date} mounth={mounth} margin={15} marginRight={0} />
-                    <View
-                         style={{
-                              flex: 1,
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              backgroundColor: '#ECECEC',
-                         }}
-                    >
-                         <TitlePost title={title} width="56.3%" />
-                    </View>
-                    <Pressable
-                         onPress={() => handleFavorite(isFavorite ? false : true)}
-                         style={styles.favorite_button}
-                    >
-                         {isFavorite === false ? (
-                              <Image
-                                   source={require('../assets/modalIcons/offFavorite.png')}
-                                   style={styles.favorite_img}
-                              />
-                         ) : (
-                              <Image
-                                   source={require('../assets/modalIcons/onFavorite.png')}
-                                   style={styles.favorite_img}
-                              />
-                         )}
-                    </Pressable>
+                    <TitlePost title={title} width="56.3%" />
+               </View>
+               <Pressable
+                    onPress={() => handleFavorite(isFavorite ? false : true)}
+                    style={styles.favorite_button}
+               >
+                    {isFavorite === false ? (
+                         <Image
+                              source={require('../assets/modalIcons/offFavorite.png')}
+                              style={styles.favorite_img}
+                         />
+                    ) : (
+                         <Image
+                              source={require('../assets/modalIcons/onFavorite.png')}
+                              style={styles.favorite_img}
+                         />
+                    )}
                </Pressable>
-          </View>
+          </Pressable>
      );
 }
 
