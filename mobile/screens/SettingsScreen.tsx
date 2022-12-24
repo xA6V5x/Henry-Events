@@ -39,6 +39,4 @@ const styles = StyleSheet.create({
           top: '2%',
           right: '22%',
      },
-     option: { marginBottom: 20 },
-     option_text: { fontSize: 20 },
 });
