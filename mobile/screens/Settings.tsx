@@ -1,6 +1,7 @@
 import Constants from 'expo-constants';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { NavBar } from '../components/NavBar';
+import { SettingsOptions } from '../components/SettingsOptions';
 // import { Text, View } from '../components/Themed';
 import { TitleDivision } from '../components/TitleDivision';
 import { RootStackScreenProps } from '../types';
@@ -13,7 +14,11 @@ export default function Settings({ navigation }: RootStackScreenProps<'Settings'
                     <View style={{ height: Constants.statusBarHeight }}></View>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
-                         <Pressable
+                         <SettingsOptions goTo="EditNick" name="Nick Name" />
+                         <SettingsOptions goTo="EditNick" name="Profile Image" />
+                         <SettingsOptions goTo="EditNick" name="Dark Mode" />
+                         <SettingsOptions goTo="LoginScreen" name="Log Out" />
+                         {/* <Pressable
                               // onPress={() => navigation.push('LoginScreen')}
                               style={({ pressed }) => ({
                                    ...styles.option,
@@ -48,7 +53,7 @@ export default function Settings({ navigation }: RootStackScreenProps<'Settings'
                               })}
                          >
                               <Text style={styles.option_text}>Log Out</Text>
-                         </Pressable>
+                         </Pressable> */}
                     </View>
                </View>
           </View>
