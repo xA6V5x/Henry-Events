@@ -14,10 +14,26 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
                     <View style={{ height: Constants.statusBarHeight }}></View>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
-                         <SettingsOptions goTo="EditNick" name="Nick Name" />
-                         <SettingsOptions goTo="EditNick" name="Profile Image" />
-                         <SettingsOptions goTo="EditNick" name="Dark Mode" />
-                         <SettingsOptions goTo="LoginScreen" name="Log Out" />
+                         <SettingsOptions
+                              navigation={navigation}
+                              goTo="EditNick"
+                              name="Nick Name"
+                         />
+                         <SettingsOptions
+                              navigation={navigation}
+                              goTo="EditNick"
+                              name="Profile Image"
+                         />
+                         <SettingsOptions
+                              navigation={navigation}
+                              goTo="EditNick"
+                              name="Dark Mode"
+                         />
+                         <SettingsOptions
+                              navigation={navigation}
+                              goTo="LoginScreen"
+                              name="Log Out"
+                         />
                     </View>
                </View>
           </View>

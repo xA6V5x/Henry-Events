@@ -1,14 +1,15 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 type SettingsOptionsProps = {
+     navigation: any;
      goTo: string;
      name: string;
 };
 
-export function SettingsOptions({ goTo, name }: SettingsOptionsProps) {
+export function SettingsOptions({ navigation, goTo, name }: SettingsOptionsProps) {
      return (
           <Pressable
-               //    onPress={() => navigation.push({goTo})}
+               onPress={() => navigation.push(goTo)}
                style={({ pressed }) => ({
                     ...styles.option,
                     opacity: pressed ? 0.5 : 1,
