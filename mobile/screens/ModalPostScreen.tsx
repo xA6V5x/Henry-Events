@@ -17,6 +17,7 @@ import { CommentsContainer } from '../components/CommentsContainer';
 import { Separator } from '../components/Separator';
 import { HeaderPost } from '../components/HeaderPost';
 import { DescriptionPost } from '../components/DescriptionPost';
+import { PeopleAssistPost } from '../components/PeopleAssistPost';
 
 type ModalProps = {
      navigation: any;
@@ -93,18 +94,13 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
                               img={author.img}
                               description={description}
                          />
-                         {/* <View style={styles.description_container}>
-                              <User name={author.name} img={author.img} marginBottom={5} />
-                              <Text style={styles.description}>{description}</Text>
-                         </View> */}
-                         <View style={styles.people_assist}>
-                              <Assist isAssist={isAssist} setAssist={handleSetAssist} />
-                              <People
-                                   navigation={navigation}
-                                   people={people}
-                                   total={isAssist ? people.length + 1 : people.length}
-                              />
-                         </View>
+                         <PeopleAssistPost
+                              navigation={navigation}
+                              people={people}
+                              total={isAssist ? people.length + 1 : people.length}
+                              isAssist={isAssist}
+                              setAssist={handleSetAssist}
+                         />
                     </View>
                     <Separator />
                     <CommentsContainer comments={comments} />
@@ -133,20 +129,5 @@ const styles = StyleSheet.create({
           justifyContent: 'center',
           height: 'auto',
           backgroundColor: '#ECECEC',
-     },
-     // ----------------------------//
-     description_container: { backgroundColor: '#ECECEC', width: '84%' },
-     description: {
-          fontSize: 15,
-     },
-     // ----------------------------//
-     people_assist: {
-          marginTop: 21,
-          marginBottom: 21,
-          width: '85%',
-          backgroundColor: '#ECECEC',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
      },
 });
