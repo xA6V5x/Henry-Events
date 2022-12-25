@@ -20,23 +20,21 @@ type cardProps = {
 export default function Card({ navigation, idPost, title, date, mounth, favorites }: cardProps) {
      const [isFavorite, setFavorite] = useState(favorites);
      return (
-          <View>
-               <Pressable
-                    onPress={() =>
-                         navigation.navigate('ModalPost', {
-                              idPost,
-                              favoriteInicial: isFavorite,
-                         })
-                    }
-                    style={({ pressed }) => ({
-                         ...styles.container,
-                         transform: pressed ? [{ scale: 0.97 }] : [{ scale: 1 }],
-                    })}
-               >
-                    <Date number={date} mounth={mounth} margin={15} marginRight={0} />
-                    <CenterContainer component={<TitlePost title={title} width="56.3%" />} />
-               </Pressable>
-          </View>
+          <Pressable
+               onPress={() =>
+                    navigation.navigate('ModalPost', {
+                         idPost,
+                         favoriteInicial: isFavorite,
+                    })
+               }
+               style={({ pressed }) => ({
+                    ...styles.container,
+                    transform: pressed ? [{ scale: 0.97 }] : [{ scale: 1 }],
+               })}
+          >
+               <Date number={date} mounth={mounth} margin={15} marginRight={0} />
+               <CenterContainer component={<TitlePost title={title} width="56.3%" />} />
+          </Pressable>
      );
 }
 
