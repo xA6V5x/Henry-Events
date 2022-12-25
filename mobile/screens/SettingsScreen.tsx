@@ -15,9 +15,10 @@ export default function SettingsScreen({ navigation }: RootStackScreenProps<'Set
                     <View style={{ height: Constants.statusBarHeight }}></View>
                     <TitleDivision title="Settings" />
                     <View style={styles.options_container}>
-                         {Options.map((option) => {
+                         {Options.map((option, index) => {
                               return (
                                    <SettingsOptions
+                                        key={index}
                                         navigation={navigation}
                                         goTo={option.goTo}
                                         name={option.name}
