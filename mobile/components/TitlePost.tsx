@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-type datesContainerProps = {
+type TitlePostProps = {
      title: string;
      width: number | string;
      margin?: number | string;
@@ -18,7 +18,7 @@ export function TitlePost({
      marginLeft,
      marginRight,
      marginBottom,
-}: datesContainerProps) {
+}: TitlePostProps) {
      return (
           <View
                style={{

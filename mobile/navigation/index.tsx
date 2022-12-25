@@ -6,13 +6,9 @@
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
-
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
+import { ColorSchemeName } from 'react-native';
 
 // Screens
-import ModalScreen from '../screens/ModalPost';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import Home from '../screens/HomeScreen';
 import Talks from '../screens/TalksScreen';
@@ -25,7 +21,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import PeopleScreen from '../screens/PeopleScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SingupScreen from '../screens/SingupScreen';
-import { View } from '../components/Themed';
+import ModalPostScreen from '../screens/ModalPostScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
      return (
@@ -86,7 +82,7 @@ function RootNavigator() {
                <Stack.Group
                     screenOptions={{ presentation: 'modal', animation: 'slide_from_bottom' }}
                >
-                    <Stack.Screen name="ModalPost" component={ModalScreen} />
+                    <Stack.Screen name="ModalPost" component={ModalPostScreen} />
                </Stack.Group>
                <Stack.Group
                     screenOptions={{ presentation: 'modal', animation: 'slide_from_right' }}

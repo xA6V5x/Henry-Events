@@ -4,15 +4,15 @@ import { View } from '../components/Themed';
 import { SvgXml } from 'react-native-svg';
 import infoNav from '../constants/NavBar.js';
 
-type navBarProps = {
+type NavBarProps = {
      navigation: any;
      nameDivision: string;
 };
 
-type nameRoute = { name: string };
+type NameRoute = { name: string };
 
-export function NavBar({ navigation, nameDivision }: navBarProps) {
-     const handleClick = ({ name }: nameRoute) => {
+export function NavBar({ navigation, nameDivision }: NavBarProps) {
+     const handleClick = ({ name }: NameRoute) => {
           nameDivision != name ? navigation.push(name) : null;
      };
 

@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-type datesContainerProps = {
+type TitleDivisionProps = {
      title: string;
 };
 
-export function TitleDivision({ title }: datesContainerProps) {
+export function TitleDivision({ title }: TitleDivisionProps) {
      return (
           <View style={styles.container}>
                <Text style={styles.title}>{title}</Text>

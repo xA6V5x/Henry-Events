@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-type userContainerProps = {
+type UserProps = {
      name: string;
      img?: string;
      margin?: number | string;
@@ -18,7 +18,7 @@ export function User({
      marginLeft,
      marginRight,
      marginBottom,
-}: userContainerProps) {
+}: UserProps) {
      return (
           <View
                style={{

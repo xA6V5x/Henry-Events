@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { User } from './User';
 
-type commentProps = { name: string; comment: string };
+type CommentProps = { name: string; comment: string };
 
-export function Comment({ name, comment }: commentProps) {
+export function Comment({ name, comment }: CommentProps) {
      return (
           <View style={styles.comment}>
                <User name={name} />

@@ -5,7 +5,7 @@ import { CenterContainer } from './CenterContainer';
 import { Date } from './Date';
 import { TitlePost } from './TitlePost';
 
-type cardProps = {
+type CardProps = {
      navigation: any;
      idPost: string;
      title: string;
@@ -21,7 +21,7 @@ export default function CardFavorites({
      date,
      mounth,
      favorite,
-}: cardProps) {
+}: CardProps) {
      const [isFavorite, setFavorite] = useState(favorite);
 
      const handleFavorite = (boolean: boolean) => {

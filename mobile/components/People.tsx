@@ -1,6 +1,6 @@
 import { Image, Pressable, StyleSheet, Text } from 'react-native';
 
-type assistProps = {
+type PeopleProps = {
      navigation: any;
      people: { idUser: string; name: string; img?: string }[];
      total: number | string;
@@ -21,7 +21,7 @@ export function People({
      marginLeft,
      marginRight,
      marginBottom,
-}: assistProps) {
+}: PeopleProps) {
      return (
           <Pressable
                onPress={() => {

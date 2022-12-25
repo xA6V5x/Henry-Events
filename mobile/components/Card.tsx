@@ -8,7 +8,7 @@ import { CenterContainer } from './CenterContainer';
 import { Date } from './Date';
 import { TitlePost } from './TitlePost';
 
-type cardProps = {
+type CardProps = {
      navigation: any;
      idPost: string;
      title: string;
@@ -17,7 +17,7 @@ type cardProps = {
      favorites: boolean;
 };
 
-export default function Card({ navigation, idPost, title, date, mounth, favorites }: cardProps) {
+export default function Card({ navigation, idPost, title, date, mounth, favorites }: CardProps) {
      const [isFavorite, setFavorite] = useState(favorites);
      return (
           <Pressable

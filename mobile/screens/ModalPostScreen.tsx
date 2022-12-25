@@ -16,8 +16,9 @@ import infoPost from '../constants/infoPost';
 import { CommentsContainer } from '../components/CommentsContainer';
 import { Separator } from '../components/Separator';
 import { HeaderPost } from '../components/HeaderPost';
+import { DescriptionPost } from '../components/DescriptionPost';
 
-type modalProps = {
+type ModalProps = {
      navigation: any;
 
      route: {
@@ -28,7 +29,7 @@ type modalProps = {
      };
 };
 
-type dataPost = {
+type DataPost = {
      title: string;
      date: number | string;
      mounth: string;
@@ -43,12 +44,12 @@ type dataPost = {
      comments: { idComment: string; idUser: string; name: string; img?: string; comment: string }[];
 };
 
-export default function ModalScreen({ navigation, route }: modalProps) {
+export default function ModalPostScreen({ navigation, route }: ModalProps) {
      const { idPost, favoriteInicial } = route.params;
 
-     const [dataPost, setDataPost] = useState<dataPost>(inicialDataPost);
+     const [dataPost, setDataPost] = useState<DataPost>(inicialDataPost);
 
-     const { title, date, mounth, description, link, author, people, comments }: dataPost =
+     const { title, date, mounth, description, link, author, people, comments }: DataPost =
           dataPost;
 
      const [isAssist, setAssist] = useState(false);
@@ -87,10 +88,15 @@ export default function ModalScreen({ navigation, route }: modalProps) {
                               isFavorite={isFavorite}
                               setFavorite={setFavorite}
                          />
-                         <View style={styles.description_container}>
+                         <DescriptionPost
+                              name={author.name}
+                              img={author.img}
+                              description={description}
+                         />
+                         {/* <View style={styles.description_container}>
                               <User name={author.name} img={author.img} marginBottom={5} />
                               <Text style={styles.description}>{description}</Text>
-                         </View>
+                         </View> */}
                          <View style={styles.people_assist}>
                               <Assist isAssist={isAssist} setAssist={handleSetAssist} />
                               <People

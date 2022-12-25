@@ -1,7 +1,7 @@
 import { Image, Pressable, StyleSheet } from 'react-native';
 import { Text } from './Themed';
 
-type asistoProps = {
+type AssistProps = {
      isAssist: boolean;
      setAssist: (n: boolean) => void;
      margin?: number | string;
@@ -19,7 +19,7 @@ export function Assist({
      marginLeft,
      marginRight,
      marginBottom,
-}: asistoProps) {
+}: AssistProps) {
      return (
           <Pressable
                onPress={() => {

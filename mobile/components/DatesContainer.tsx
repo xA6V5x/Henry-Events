@@ -8,13 +8,13 @@ import { NavBar } from './NavBar';
 import { TitleDivision } from './TitleDivision';
 import infoHenry from '../constants/infoHenryPosts';
 
-type datesContainerProps = {
+type DatesContainerProps = {
      nameDivision: string;
      endpoint: string;
      navigation: any;
 };
 
-export function DatesContainer({ nameDivision, endpoint, navigation }: datesContainerProps) {
+export function DatesContainer({ nameDivision, endpoint, navigation }: DatesContainerProps) {
      //  useEffect(() => {
      //       axios.get(endpoint);
      //  });

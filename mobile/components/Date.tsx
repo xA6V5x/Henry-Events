@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-type datesContainerProps = {
+type DateProps = {
      number: number | string;
      mounth: string;
      margin?: number | string;
@@ -18,7 +18,7 @@ export function Date({
      marginLeft,
      marginRight,
      marginBottom,
-}: datesContainerProps) {
+}: DateProps) {
      const mounthSize = mounth.length <= 8 ? 15 : mounth.length <= 9 ? 12 : 11.5;
 
      return (

@@ -1,7 +1,7 @@
 import { Image, StyleSheet, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 // import { Text, View } from './Themed';
 
-type inputCommentProps = {
+type InputCommentProps = {
      commentMessage: string;
      setCommentMessage: (n: string) => void;
      handleChange: (n: string) => void;
@@ -11,7 +11,7 @@ export function InputComment({
      commentMessage,
      setCommentMessage,
      handleChange,
-}: inputCommentProps) {
+}: InputCommentProps) {
      return (
           <View style={styles.container}>
                <TextInput
