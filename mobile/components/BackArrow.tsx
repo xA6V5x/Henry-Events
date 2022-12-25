@@ -1,4 +1,5 @@
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
+import Constants from 'expo-constants';
 
 export function BackArrow({ navigation }: any) {
      return (
@@ -13,7 +14,12 @@ export function BackArrow({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-     back_container: { position: 'absolute', top: 5, left: 10, zIndex: 100 },
+     back_container: {
+          position: 'absolute',
+          top: Constants.statusBarHeight,
+          left: 10,
+          zIndex: 100,
+     },
      back_img: {
           width: 30,
           height: 30,

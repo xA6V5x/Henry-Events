@@ -13,6 +13,9 @@ import { User } from '../components/User';
 import Constants from 'expo-constants';
 import inicialDataPost from '../constants/inicialDataPost';
 import infoPost from '../constants/infoPost';
+import { CommentsContainer } from '../components/CommentsContainer';
+import { Separator } from '../components/Separator';
+import { HeaderPost } from '../components/HeaderPost';
 
 type modalProps = {
      navigation: any;
@@ -73,85 +76,43 @@ export default function ModalScreen({ navigation, route }: modalProps) {
      };
 
      return (
-          <View style={styles.container}>
-               <View
-                    style={{
-                         height: Constants.statusBarHeight,
-                         backgroundColor: '#ECECEC',
-                    }}
-               ></View>
-               <SafeAreaView style={styles.scroll_container}>
-                    <ScrollView style={styles.scroll}>
-                         <View style={styles.header_container}>
-                              <BackArrow navigation={navigation} />
-                              <View style={styles.header}>
-                                   <Date
-                                        number={date}
-                                        mounth={mounth}
-                                        margin={15}
-                                        marginRight={0}
-                                   />
-                                   <TitlePost
-                                        title={title}
-                                        width={130}
-                                        marginLeft={'10%'}
-                                        marginRight={'10%'}
-                                   />
-                                   <Pressable
-                                        onPress={() => setFavorite(isFavorite ? false : true)}
-                                   >
-                                        <Image
-                                             source={
-                                                  isFavorite
-                                                       ? require('../assets/modalIcons/onFavorite1.png')
-                                                       : require('../assets/modalIcons/offFavorite.png')
-                                             }
-                                             style={styles.favorite_img}
-                                        />
-                                   </Pressable>
-                              </View>
-                              <View style={styles.description_container}>
-                                   <User name={author.name} img={author.img} marginBottom={5} />
-                                   <Text style={styles.description}>{description}</Text>
-                              </View>
-                              <View style={styles.people_assist}>
-                                   <Assist isAssist={isAssist} setAssist={handleSetAssist} />
-                                   <People
-                                        navigation={navigation}
-                                        people={people}
-                                        total={isAssist ? people.length + 1 : people.length}
-                                   />
-                              </View>
+          <SafeAreaView style={styles.scroll_container}>
+               <ScrollView style={styles.scroll}>
+                    <View style={styles.header_container}>
+                         <BackArrow navigation={navigation} />
+                         <HeaderPost
+                              title={title}
+                              date={date}
+                              mounth={mounth}
+                              isFavorite={isFavorite}
+                              setFavorite={setFavorite}
+                         />
+                         <View style={styles.description_container}>
+                              <User name={author.name} img={author.img} marginBottom={5} />
+                              <Text style={styles.description}>{description}</Text>
                          </View>
-                         <View style={styles.separator} />
-                         <View style={styles.comments_container}>
-                              {comments.map((data) => {
-                                   return (
-                                        <Comment
-                                             key={data.idComment}
-                                             name={data.name}
-                                             comment={data.comment}
-                                        />
-                                   );
-                              })}
+                         <View style={styles.people_assist}>
+                              <Assist isAssist={isAssist} setAssist={handleSetAssist} />
+                              <People
+                                   navigation={navigation}
+                                   people={people}
+                                   total={isAssist ? people.length + 1 : people.length}
+                              />
                          </View>
-                    </ScrollView>
-               </SafeAreaView>
+                    </View>
+                    <Separator />
+                    <CommentsContainer comments={comments} />
+               </ScrollView>
                <InputComment
                     commentMessage={commentMessage}
                     setCommentMessage={setCommentMessage}
                     handleChange={handleChange}
                />
-          </View>
+          </SafeAreaView>
      );
 }
 
 const styles = StyleSheet.create({
-     container: {
-          flex: 1,
-          zIndex: 100,
-          backgroundColor: '#ffff',
-     },
      scroll_container: {
           flex: 1,
      },
@@ -160,24 +121,12 @@ const styles = StyleSheet.create({
      },
      // ----------------------------//
      header_container: {
+          paddingTop: Constants.statusBarHeight,
           width: '100%',
           alignItems: 'center',
           justifyContent: 'center',
           height: 'auto',
           backgroundColor: '#ECECEC',
-     },
-     // ----------------------------//
-     header: {
-          marginBottom: 5,
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: 'auto',
-          backgroundColor: '#ECECEC',
-     },
-     favorite_img: {
-          width: 35,
-          height: 35,
      },
      // ----------------------------//
      description_container: { backgroundColor: '#ECECEC', width: '84%' },
@@ -193,19 +142,5 @@ const styles = StyleSheet.create({
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'space-between',
-     },
-     // ----------------------------//
-
-     separator: {
-          height: 2,
-          width: '100%',
-          backgroundColor: '#A6A6A6',
-     },
-     // ----------------------------//
-     comments_container: {
-          flex: 1,
-          width: '100%',
-          alignItems: 'center',
-          backgroundColor: '#ffff',
      },
 });
