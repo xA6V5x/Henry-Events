@@ -3,6 +3,7 @@ import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
+import { CenterContainer } from './CenterContainer';
 // import ModalDescription from '../screens/ModalDescription';
 import { Date } from './Date';
 import { TitlePost } from './TitlePost';
@@ -33,16 +34,7 @@ export default function Card({ navigation, idPost, title, date, mounth, favorite
                     })}
                >
                     <Date number={date} mounth={mounth} margin={15} marginRight={0} />
-                    <View
-                         style={{
-                              flex: 1,
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              backgroundColor: '#ECECEC',
-                         }}
-                    >
-                         <TitlePost title={title} width="56.3%" />
-                    </View>
+                    <CenterContainer component={<TitlePost title={title} width="56.3%" />} />
                </Pressable>
           </View>
      );
@@ -68,12 +60,5 @@ const styles = StyleSheet.create({
      favorite_img: {
           width: 25,
           height: 25,
-     },
-     text: {
-          width: '58%',
-          backgroundColor: '#ECECEC',
-          fontSize: 17,
-          fontWeight: '400',
-          textAlign: 'center',
      },
 });
