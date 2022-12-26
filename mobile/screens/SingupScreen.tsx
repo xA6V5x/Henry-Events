@@ -9,7 +9,6 @@ import {
      SafeAreaView,
      ScrollView,
      Alert,
-     Pressable,
      TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
