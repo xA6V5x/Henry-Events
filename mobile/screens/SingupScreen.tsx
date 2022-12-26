@@ -17,6 +17,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { HenryEventsLogo } from '../components/HenryEventsLogo';
+import { TextNavigate } from '../components/TextNavigate';
 
 const reviewSchema = yup.object({
      nickName: yup.string().required(),
@@ -146,15 +147,7 @@ export default function SingupScreen({ navigation }: RootStackScreenProps<'Singu
                               <Text style={styles.text_footer}>
                                    Do you alrady have an account?{' '}
                               </Text>
-                              <Pressable onPress={() => navigation.goBack()}>
-                                   <Text
-                                        style={{
-                                             fontSize: 16,
-                                        }}
-                                   >
-                                        Log In
-                                   </Text>
-                              </Pressable>
+                              <TextNavigate name="Log In" onPress={() => navigation.goBack()} />
                          </View>
                     </View>
                     <StatusBar style="auto" />

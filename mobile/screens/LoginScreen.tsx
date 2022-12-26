@@ -17,6 +17,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { HenryEventsLogo } from '../components/HenryEventsLogo';
+import { TextNavigate } from '../components/TextNavigate';
 
 const reviewSchema = yup.object({
      email: yup.string().required().email(),
@@ -143,15 +144,10 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'LoginS
                          </View>
                          <View style={styles.footer}>
                               <Text style={styles.text_footer}>Don't have an account? </Text>
-                              <Pressable onPress={() => navigation.push('SingupScreen')}>
-                                   <Text
-                                        style={{
-                                             fontSize: 16,
-                                        }}
-                                   >
-                                        Sing up
-                                   </Text>
-                              </Pressable>
+                              <TextNavigate
+                                   name="Sing up"
+                                   onPress={() => navigation.push('SingupScreen')}
+                              />
                          </View>
                     </View>
                     <StatusBar style="auto" />
