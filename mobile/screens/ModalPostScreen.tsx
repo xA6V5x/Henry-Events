@@ -1,15 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Image, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Image, Pressable, SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 // import { View } from '../components/Themed';
-import { Assist } from '../components/Assist';
 import { BackArrow } from '../components/BackArrow';
-import { Comment } from '../components/Comment';
-import { Date } from '../components/Date';
 import { InputComment } from '../components/InputComment';
-import { People } from '../components/People';
-import { TitlePost } from '../components/TitlePost';
-import { User } from '../components/User';
 import Constants from 'expo-constants';
 import inicialDataPost from '../constants/inicialDataPost';
 import infoPost from '../constants/infoPost';
@@ -117,9 +111,11 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
 const styles = StyleSheet.create({
      scroll_container: {
           flex: 1,
+          backgroundColor: '#fffff',
      },
      scroll: {
           width: '100%',
+          backgroundColor: '#fffff',
      },
      // ----------------------------//
      header_container: {
