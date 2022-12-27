@@ -111,11 +111,9 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
 const styles = StyleSheet.create({
      scroll_container: {
           flex: 1,
-          backgroundColor: '#fffff',
      },
      scroll: {
           width: '100%',
-          backgroundColor: '#fffff',
      },
      // ----------------------------//
      header_container: {
