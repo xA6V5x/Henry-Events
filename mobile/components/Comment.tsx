@@ -21,10 +21,10 @@ const styles = StyleSheet.create({
           alignItems: 'center',
      },
      comment: {
+          marginTop: 5,
           padding: 15,
           backgroundColor: '#ECECEC',
-          width: '90%',
-          marginTop: 15,
+          width: '95%',
      },
      comment_text: {
           backgroundColor: '#ECECEC',
