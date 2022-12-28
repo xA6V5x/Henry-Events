@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
      },
      iconHome: { width: 35, height: 35, marginTop: '15%' },
      iconTalks: { width: 50, height: 50, marginTop: '15%' },
-     iconMeetings: { width: 45, height: 45, marginTop: '10%' },
+     iconMeetings: { width: 45, height: 45, marginTop: '5%' },
      iconFavs: { width: 35, height: 35, marginTop: '20%' },
      iconSettings: { width: 37, height: 37, marginTop: '28%' },
 });
