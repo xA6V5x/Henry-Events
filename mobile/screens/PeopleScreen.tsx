@@ -17,21 +17,19 @@ export default function PeopleScreen({ navigation, route }: peopleScreenProps) {
      const { people } = route.params;
 
      return (
-          <View style={styles.container}>
-               <SafeAreaView style={styles.scroll_container}>
-                    <ScrollView style={styles.scroll}>
-                         <BackArrow navigation={navigation} />
-                         <TitleDivision title="People" />
-                         {people.map((data) => {
-                              return (
-                                   <View key={data.idUser} style={styles.user}>
-                                        <User name={data.name} img={data.img ? data.img : ''} />
-                                   </View>
-                              );
-                         })}
-                    </ScrollView>
-               </SafeAreaView>
-          </View>
+          <SafeAreaView style={styles.scroll_container}>
+               <BackArrow navigation={navigation} />
+               <ScrollView style={styles.scroll}>
+                    <TitleDivision title="People" />
+                    {people.map((data) => {
+                         return (
+                              <View key={data.idUser} style={styles.user}>
+                                   <User name={data.name} img={data.img ? data.img : ''} />
+                              </View>
+                         );
+                    })}
+               </ScrollView>
+          </SafeAreaView>
      );
 }
 
@@ -43,15 +41,10 @@ const styles = StyleSheet.create({
      },
      scroll_container: {
           flex: 1,
+          backgroundColor: '#ffff',
      },
      scroll: {
           width: '100%',
-     },
-     // ----------
-     back_container: { position: 'absolute', top: 5, left: 10, zIndex: 100 },
-     back_img: {
-          width: 30,
-          height: 30,
      },
      // ----------
      user: {

@@ -16,7 +16,7 @@ export function BackArrow({ navigation }: any) {
 const styles = StyleSheet.create({
      back_container: {
           position: 'absolute',
-          top: Constants.statusBarHeight,
+          top: Constants.statusBarHeight * 2,
           left: 10,
           zIndex: 100,
      },
