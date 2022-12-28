@@ -21,6 +21,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import PeopleScreen from '../screens/PeopleScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SingupScreen from '../screens/SingupScreen';
+import CreateEvent from '../screens/CreateEventScreen';
 import ModalPostScreen from '../screens/ModalPostScreen';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
@@ -40,12 +41,12 @@ function RootNavigator() {
      return (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
                <Stack.Screen
-                    name="LoginScreen"
+                    name="Login"
                     component={LoginScreen}
                     options={{ headerShown: false, animation: 'none' }}
                />
                <Stack.Screen
-                    name="SingupScreen"
+                    name="Singup"
                     component={SingupScreen}
                     options={{ headerShown: false }}
                />
@@ -70,6 +71,11 @@ function RootNavigator() {
                     options={{ headerShown: false, animation: 'none' }}
                />
                <Stack.Screen
+                    name="CreateEvent"
+                    component={CreateEvent}
+                    options={{ headerShown: false, animation: 'none' }}
+               />
+               <Stack.Screen
                     name="Settings"
                     component={Settings}
                     options={{ headerShown: false, animation: 'none' }}
@@ -87,7 +93,7 @@ function RootNavigator() {
                <Stack.Group
                     screenOptions={{ presentation: 'modal', animation: 'slide_from_right' }}
                >
-                    <Stack.Screen name="PeopleScreen" component={PeopleScreen} />
+                    <Stack.Screen name="People" component={PeopleScreen} />
                </Stack.Group>
           </Stack.Navigator>
      );

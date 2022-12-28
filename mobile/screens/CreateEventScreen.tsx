@@ -9,7 +9,6 @@ import {
      SafeAreaView,
      ScrollView,
      Alert,
-     Pressable,
      TouchableOpacity,
 } from 'react-native';
 import axios from 'axios';
@@ -20,40 +19,32 @@ import { HenryEventsLogo } from '../components/HenryEventsLogo';
 import { TextNavigate } from '../components/TextNavigate';
 
 const reviewSchema = yup.object({
+     nickName: yup.string().required(),
      email: yup.string().required().email(),
      password: yup.string().required(),
+     confirmPassword: yup.string().required(),
 });
 
-type loginProps = {
+type singupProps = {
+     nickName: string;
      email: string;
+     confirmPassword: string;
      password: string;
 };
 
-export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'>) {
-     const submit = async (values: loginProps) => {
-          navigation.push('Home');
-          // () => navigation.replace('Home')
-          // try {
-          //      let res = await axios.post(
-          //           'https://backend-gamematch.herokuapp.com/users/login',
-          //           values
-          //      );
-          //      let user = {
-          //           username: res.data.username,
-          //           _id: res.data._id,
-          //           chats: res.data.chats,
-          //           dark: res.data.dark,
-          //           premium: res.data.premium,
-          //           rating: res.data.rating,
-          //           reviews: res.data.reviews,
-          //           roles: res.data.roles,
-          //           status: res.data.status,
-          //      };
-          //      navigation.navigate('Home');
-          // } catch (error: any) {
-          //      Alert.alert(error.response.data.message || error.message);
-          //      return;
-          // }
+export default function CreateEventScreen({ navigation }: RootStackScreenProps<'CreateEvent'>) {
+     const submit = async (values: singupProps) => {
+          if (values.password !== values.confirmPassword) {
+               return Alert.alert('Passwords do not match');
+          }
+          try {
+               //    let res = await axios.post('https://', values);
+               Alert.alert('Confirm the message that was sent to your email and log in');
+               navigation.navigate('Login');
+          } catch (error: any) {
+               Alert.alert(error.response.data.message || error.message);
+               return;
+          }
      };
 
      return (
@@ -62,8 +53,7 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
                <ScrollView style={{ width: '100%' }}>
                     <View
                          style={{
-                              marginTop: '20%',
-                              marginBottom: 8,
+                              marginTop: '5%',
                          }}
                     >
                          <HenryEventsLogo />
@@ -71,8 +61,10 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
                     <View style={styles.form_container}>
                          <Formik
                               initialValues={{
+                                   nickName: '',
                                    email: '',
                                    password: '',
+                                   confirmPassword: '',
                               }}
                               validationSchema={reviewSchema}
                               onSubmit={submit}
@@ -83,71 +75,78 @@ export default function LoginScreen({ navigation }: RootStackScreenProps<'Login'
                                              style={{ ...styles.form_container, paddingBottom: 0 }}
                                         >
                                              <TextInput
+                                                  placeholder="Nick name"
+                                                  onChangeText={formikProps.handleChange(
+                                                       'nickName'
+                                                  )}
+                                                  value={formikProps.values.nickName}
+                                                  onBlur={formikProps.handleBlur('nickName')}
+                                                  style={styles.input}
+                                             />
+
+                                             <Text style={styles.text_error}>
+                                                  {/* {formikProps.touched.email &&
+                                                       formikProps.errors.email} */}
+                                             </Text>
+
+                                             <TextInput
                                                   placeholder="Email"
                                                   onChangeText={formikProps.handleChange('email')}
                                                   value={formikProps.values.email}
                                                   onBlur={formikProps.handleBlur('email')}
                                                   style={styles.input}
                                              />
-
-                                             <Text
-                                                  style={{
-                                                       color: 'red',
-                                                       fontSize: 15,
-                                                  }}
-                                             >
-                                                  {/* {formikProps.touched.email &&
-                                                       formikProps.errors.email} */}
+                                             <Text style={styles.text_error}>
+                                                  {/* {formikProps.touched.password &&
+                                                       formikProps.errors.password} */}
                                              </Text>
-
                                              <TextInput
                                                   placeholder="Password"
-                                                  style={styles.input}
                                                   onChangeText={formikProps.handleChange(
                                                        'password'
                                                   )}
                                                   value={formikProps.values.password}
                                                   secureTextEntry={true}
+                                                  style={styles.input}
                                              />
-                                             <Text
-                                                  style={{
-                                                       color: 'red',
-                                                       fontSize: 15,
-                                                  }}
-                                             >
+                                             <Text style={styles.text_error}>
                                                   {/* {formikProps.touched.password &&
                                                        formikProps.errors.password} */}
                                              </Text>
-
+                                             <TextInput
+                                                  placeholder="Confirm password"
+                                                  onChangeText={formikProps.handleChange(
+                                                       'confirmPassword'
+                                                  )}
+                                                  value={formikProps.values.confirmPassword}
+                                                  secureTextEntry={true}
+                                                  style={styles.input}
+                                             />
+                                             <Text style={styles.text_error}>
+                                                  {/* {formikProps.touched.password &&
+                                                       formikProps.errors.password} */}
+                                             </Text>
                                              <TouchableOpacity
                                                   activeOpacity={0.8}
                                                   style={styles.button}
                                                   onPress={() => formikProps.handleSubmit()}
                                              >
-                                                  <Text style={styles.button_text}>Login</Text>
+                                                  <Text style={styles.button_text}>Sing up</Text>
                                              </TouchableOpacity>
                                         </View>
                                    </TouchableWithoutFeedback>
                               )}
                          </Formik>
-                         <View style={styles.footer}>
-                              <Pressable onPress={() => navigation.push('Singup')}>
-                                   <Text style={styles.text_footer}>
-                                        Forgot your login details?
-                                   </Text>
-                              </Pressable>
-                         </View>
-                         <View style={{ ...styles.footer, marginTop: 18 }}>
+                         <View style={{ ...styles.footer, marginBottom: 5 }}>
                               <View style={styles.line}></View>
                               <Text style={{ fontSize: 16, color: '#C9C9C9' }}>OR</Text>
                               <View style={styles.line}></View>
                          </View>
                          <View style={styles.footer}>
-                              <Text style={styles.text_footer}>Don't have an account? </Text>
-                              <TextNavigate
-                                   name="Sing up"
-                                   onPress={() => navigation.push('Singup')}
-                              />
+                              <Text style={styles.text_footer}>
+                                   Do you alrady have an account?{' '}
+                              </Text>
+                              <TextNavigate name="Log In" onPress={() => navigation.goBack()} />
                          </View>
                     </View>
                     <StatusBar style="auto" />
@@ -177,11 +176,11 @@ const styles = StyleSheet.create({
      form_container: {
           width: '100%',
           alignItems: 'center',
-          paddingBottom: '12%',
+          paddingBottom: '8%',
      },
 
      input: {
-          margin: 15,
+          margin: 5,
           width: '75%',
           height: 45,
           paddingLeft: 15,
@@ -192,6 +191,11 @@ const styles = StyleSheet.create({
           color: '#000000',
           borderColor: '#717171',
           backgroundColor: '#ffffff',
+     },
+
+     text_error: {
+          color: 'red',
+          fontSize: 15,
      },
 
      button: {

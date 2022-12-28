@@ -14,15 +14,16 @@ declare global {
 }
 
 export type RootStackParamList = {
-     LoginScreen: undefined;
-     SingupScreen: undefined;
+     Login: undefined;
+     Singup: undefined;
      Home: undefined;
      Talks: undefined;
      Meetings: undefined;
      Favorites: undefined;
      Settings: undefined;
      ModalPost: undefined;
-     PeopleScreen: undefined;
+     People: undefined;
+     CreateEvent: undefined;
      NotFound: undefined;
 };
 

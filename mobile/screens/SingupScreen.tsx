@@ -32,7 +32,7 @@ type singupProps = {
      password: string;
 };
 
-export default function SingupScreen({ navigation }: RootStackScreenProps<'SingupScreen'>) {
+export default function SingupScreen({ navigation }: RootStackScreenProps<'Singup'>) {
      const submit = async (values: singupProps) => {
           if (values.password !== values.confirmPassword) {
                return Alert.alert('Passwords do not match');
@@ -40,7 +40,7 @@ export default function SingupScreen({ navigation }: RootStackScreenProps<'Singu
           try {
                //    let res = await axios.post('https://', values);
                Alert.alert('Confirm the message that was sent to your email and log in');
-               navigation.navigate('LoginScreen');
+               navigation.navigate('Login');
           } catch (error: any) {
                Alert.alert(error.response.data.message || error.message);
                return;
