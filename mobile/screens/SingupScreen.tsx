@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { RootStackScreenProps } from '../types';
 import {
      StyleSheet,
@@ -11,7 +12,6 @@ import {
      Alert,
      TouchableOpacity,
 } from 'react-native';
-import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -53,7 +53,7 @@ export default function SingupScreen({ navigation }: RootStackScreenProps<'Singu
                <ScrollView style={{ width: '100%' }}>
                     <View
                          style={{
-                              marginTop: '5%',
+                              marginTop: '10%',
                          }}
                     >
                          <HenryEventsLogo />

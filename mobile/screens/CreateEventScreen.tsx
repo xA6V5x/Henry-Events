@@ -16,44 +16,47 @@ import { StatusBar } from 'expo-status-bar';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { HenryEventsLogo } from '../components/HenryEventsLogo';
-import { TextNavigate } from '../components/TextNavigate';
+import { BackArrow } from '../components/BackArrow';
 
 const reviewSchema = yup.object({
-     nickName: yup.string().required(),
-     email: yup.string().required().email(),
-     password: yup.string().required(),
-     confirmPassword: yup.string().required(),
+     Title: yup.string().required(),
+     Date: yup.string().required(),
+     Description: yup.string().required().email(),
+     Link: yup.string().required(),
+     EventType: yup.string().required(),
 });
 
 type singupProps = {
-     nickName: string;
-     email: string;
-     confirmPassword: string;
-     password: string;
+     Title: string;
+     Date: string;
+     Description: string;
+     Link: string;
+     EventType: string;
 };
 
 export default function CreateEventScreen({ navigation }: RootStackScreenProps<'CreateEvent'>) {
      const submit = async (values: singupProps) => {
-          if (values.password !== values.confirmPassword) {
-               return Alert.alert('Passwords do not match');
-          }
-          try {
-               //    let res = await axios.post('https://', values);
-               Alert.alert('Confirm the message that was sent to your email and log in');
-               navigation.navigate('Login');
-          } catch (error: any) {
-               Alert.alert(error.response.data.message || error.message);
-               return;
-          }
+          // if (values.password !== values.confirmPassword) {
+          //      return Alert.alert('Passwords do not match');
+          // }
+          // try {
+          //      //    let res = await axios.post('https://', values);
+          //      Alert.alert('Confirm the message that was sent to your email and log in');
+          //      navigation.navigate('Login');
+          // } catch (error: any) {
+          //      Alert.alert(error.response.data.message || error.message);
+          //      return;
+          // }
      };
 
      return (
           <SafeAreaView style={styles.container}>
+               <BackArrow navigation={navigation} />
                <View style={styles.triangle_yellow}></View>
                <ScrollView style={{ width: '100%' }}>
                     <View
                          style={{
-                              marginTop: '5%',
+                              marginTop: '10%',
                          }}
                     >
                          <HenryEventsLogo />
@@ -61,10 +64,11 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                     <View style={styles.form_container}>
                          <Formik
                               initialValues={{
-                                   nickName: '',
-                                   email: '',
-                                   password: '',
-                                   confirmPassword: '',
+                                   Title: '',
+                                   Date: '',
+                                   Description: '',
+                                   Link: '',
+                                   EventType: '',
                               }}
                               validationSchema={reviewSchema}
                               onSubmit={submit}
@@ -75,12 +79,23 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                              style={{ ...styles.form_container, paddingBottom: 0 }}
                                         >
                                              <TextInput
-                                                  placeholder="Nick name"
+                                                  placeholder="Event Type"
                                                   onChangeText={formikProps.handleChange(
-                                                       'nickName'
+                                                       'EventType'
                                                   )}
-                                                  value={formikProps.values.nickName}
-                                                  onBlur={formikProps.handleBlur('nickName')}
+                                                  value={formikProps.values.EventType}
+                                                  secureTextEntry={true}
+                                                  style={styles.input}
+                                             />
+                                             <Text style={styles.text_error}>
+                                                  {/* {formikProps.touched.password &&
+                                                       formikProps.errors.password} */}
+                                             </Text>
+                                             <TextInput
+                                                  placeholder="Title"
+                                                  onChangeText={formikProps.handleChange('Title')}
+                                                  value={formikProps.values.Title}
+                                                  onBlur={formikProps.handleBlur('Title')}
                                                   style={styles.input}
                                              />
 
@@ -90,10 +105,10 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                              </Text>
 
                                              <TextInput
-                                                  placeholder="Email"
-                                                  onChangeText={formikProps.handleChange('email')}
-                                                  value={formikProps.values.email}
-                                                  onBlur={formikProps.handleBlur('email')}
+                                                  placeholder="Date"
+                                                  onChangeText={formikProps.handleChange('Date')}
+                                                  value={formikProps.values.Date}
+                                                  onBlur={formikProps.handleBlur('Date')}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>
@@ -101,11 +116,11 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                        formikProps.errors.password} */}
                                              </Text>
                                              <TextInput
-                                                  placeholder="Password"
+                                                  placeholder="Description"
                                                   onChangeText={formikProps.handleChange(
-                                                       'password'
+                                                       'Description'
                                                   )}
-                                                  value={formikProps.values.password}
+                                                  value={formikProps.values.Description}
                                                   secureTextEntry={true}
                                                   style={styles.input}
                                              />
@@ -114,11 +129,9 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                        formikProps.errors.password} */}
                                              </Text>
                                              <TextInput
-                                                  placeholder="Confirm password"
-                                                  onChangeText={formikProps.handleChange(
-                                                       'confirmPassword'
-                                                  )}
-                                                  value={formikProps.values.confirmPassword}
+                                                  placeholder={`Link`}
+                                                  onChangeText={formikProps.handleChange('Link')}
+                                                  value={formikProps.values.Link}
                                                   secureTextEntry={true}
                                                   style={styles.input}
                                              />
@@ -131,23 +144,14 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                   style={styles.button}
                                                   onPress={() => formikProps.handleSubmit()}
                                              >
-                                                  <Text style={styles.button_text}>Sing up</Text>
+                                                  <Text style={styles.button_text}>
+                                                       Create Event
+                                                  </Text>
                                              </TouchableOpacity>
                                         </View>
                                    </TouchableWithoutFeedback>
                               )}
                          </Formik>
-                         <View style={{ ...styles.footer, marginBottom: 5 }}>
-                              <View style={styles.line}></View>
-                              <Text style={{ fontSize: 16, color: '#C9C9C9' }}>OR</Text>
-                              <View style={styles.line}></View>
-                         </View>
-                         <View style={styles.footer}>
-                              <Text style={styles.text_footer}>
-                                   Do you alrady have an account?{' '}
-                              </Text>
-                              <TextNavigate name="Log In" onPress={() => navigation.goBack()} />
-                         </View>
                     </View>
                     <StatusBar style="auto" />
                </ScrollView>

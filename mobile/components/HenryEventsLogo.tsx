@@ -25,8 +25,10 @@ const styles = StyleSheet.create({
      henry: {
           zIndex: 10,
           position: 'absolute',
-          top: 37.5,
-          left: 90,
+          // top: 37.5,
+          top: '25%',
+          // left: 90,
+          left: '22%',
           //   top: 85,
           //   top: 115,
           //   left: 128.6,
