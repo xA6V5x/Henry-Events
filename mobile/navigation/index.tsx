@@ -70,11 +70,9 @@ function RootNavigator() {
                     component={Favorites}
                     options={{ headerShown: false, animation: 'none' }}
                />
-               <Stack.Screen
-                    name="CreateEvent"
-                    component={CreateEvent}
-                    options={{ headerShown: false, animation: 'none' }}
-               />
+               <Stack.Group screenOptions={{ presentation: 'modal' }}>
+                    <Stack.Screen name="CreateEvent" component={CreateEvent} />
+               </Stack.Group>
                <Stack.Screen
                     name="Settings"
                     component={Settings}
@@ -85,6 +83,7 @@ function RootNavigator() {
                     component={NotFoundScreen}
                     options={{ title: 'Oops!' }}
                />
+
                <Stack.Group
                     screenOptions={{ presentation: 'modal', animation: 'slide_from_bottom' }}
                >

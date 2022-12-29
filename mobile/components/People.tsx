@@ -25,7 +25,7 @@ export function People({
      return (
           <Pressable
                onPress={() => {
-                    navigation.push('PeopleScreen', { people });
+                    navigation.push('People', { people });
                }}
                style={{
                     ...styles.container,
