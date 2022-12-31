@@ -17,25 +17,27 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { HenryEventsLogo } from '../components/HenryEventsLogo';
 import { BackArrow } from '../components/BackArrow';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import moment from 'moment';
 
 const reviewSchema = yup.object({
      Title: yup.string().required(),
-     Date: yup.string().required(),
+     // Date: yup.date().required(),
      Description: yup.string().required().email(),
      Link: yup.string().required(),
      EventType: yup.string().required(),
 });
 
-type singupProps = {
+type CreateEventProps = {
      Title: string;
-     Date: string;
+     // Date: Date;
      Description: string;
      Link: string;
      EventType: string;
 };
 
 export default function CreateEventScreen({ navigation }: RootStackScreenProps<'CreateEvent'>) {
-     const submit = async (values: singupProps) => {
+     const submit = async (values: CreateEventProps) => {
           // if (values.password !== values.confirmPassword) {
           //      return Alert.alert('Passwords do not match');
           // }
@@ -65,7 +67,7 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                          <Formik
                               initialValues={{
                                    Title: '',
-                                   Date: '',
+                                   Date: new Date(),
                                    Description: '',
                                    Link: '',
                                    EventType: '',
@@ -103,14 +105,20 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                   {/* {formikProps.touched.email &&
                                                        formikProps.errors.email} */}
                                              </Text>
-
-                                             <TextInput
+                                             <DateTimePicker
+                                                  testID="dateTimePicker"
+                                                  minimumDate={formikProps.values.Date}
+                                                  value={formikProps.values.Date}
+                                                  mode="date"
+                                                  display="default"
+                                             />
+                                             {/* <Input
                                                   placeholder="Date"
                                                   onChangeText={formikProps.handleChange('Date')}
                                                   value={formikProps.values.Date}
                                                   onBlur={formikProps.handleBlur('Date')}
                                                   style={styles.input}
-                                             />
+                                             /> */}
                                              <Text style={styles.text_error}>
                                                   {/* {formikProps.touched.password &&
                                                        formikProps.errors.password} */}
