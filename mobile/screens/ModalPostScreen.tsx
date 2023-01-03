@@ -55,9 +55,9 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
 
      useEffect(() => {
           (async () => {
-               //      const dataPost: dataPost = await axios
-               //           .get(`https://${idPost}`)
-               //           .then((json) => json.data);
+               // const dataPost: dataPost = await axios
+               //      .get(`https://${idPost}`)
+               //      .then((json) => json.data);
                setDataPost(infoPost);
           })();
      }, [idPost]);

@@ -1,5 +1,5 @@
 // import axios from 'axios';
-// import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
 import Card from '../components/Card';
@@ -7,6 +7,7 @@ import { NavBar } from './NavBar';
 // import { View } from '../components/Themed';
 import { TitleDivision } from './TitleDivision';
 import infoHenry from '../constants/infoHenryPosts';
+import axios from 'axios';
 
 type DatesContainerProps = {
      nameDivision: string;
@@ -14,10 +15,21 @@ type DatesContainerProps = {
      navigation: any;
 };
 
+type DataPost = {
+     id: string;
+     title: string;
+     date: string;
+}[];
+
 export function DatesContainer({ nameDivision, endpoint, navigation }: DatesContainerProps) {
-     //  useEffect(() => {
-     //       axios.get(endpoint);
-     //  });
+     const [dataPost, setDataPost] = useState<DataPost>();
+
+     // useEffect(() => {
+     //      (async () => {
+     //           const dataPost: DataPost = await axios.get(endpoint).then((json) => json.data);
+     //           setDataPost(dataPost);
+     //      })();
+     // }, []);
 
      return (
           <View style={styles.container}>
@@ -27,6 +39,18 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                          <View style={styles.cards_container}>
                               <View style={{ height: Constants.statusBarHeight }}></View>
                               <TitleDivision title={nameDivision} />
+                              {/* {dataPost?.map((data) => {
+                                   return (
+                                        <Card
+                                             navigation={navigation}
+                                             key={data.id}
+                                             idPost={data.id}
+                                             date={data.date}
+                                             title={data.title}
+                                             // favorites={data.favorites}
+                                        />
+                                   );
+                              })} */}
                               {infoHenry.map((data) => {
                                    return (
                                         <Card

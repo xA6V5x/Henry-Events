@@ -35,6 +35,25 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
      );
 }
 
+const LoginStack = createNativeStackNavigator<RootStackParamList>();
+
+function LoginNavigator() {
+     return (
+          <LoginStack.Navigator screenOptions={{ headerShown: false }}>
+               <LoginStack.Screen
+                    name="Login"
+                    component={LoginScreen}
+                    options={{ headerShown: false, animation: 'none' }}
+               />
+               <LoginStack.Screen
+                    name="Singup"
+                    component={SingupScreen}
+                    options={{ headerShown: false }}
+               />
+          </LoginStack.Navigator>
+     );
+}
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {

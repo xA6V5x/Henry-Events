@@ -8,7 +8,7 @@ export default function MeetingsScreen({ navigation }: RootStackScreenProps<'Mee
           <View style={styles.container}>
                <DatesContainer
                     nameDivision="Meetings"
-                    endpoint="https://"
+                    endpoint="https://henryevent.onrender.com/meetings"
                     navigation={navigation}
                />
           </View>
