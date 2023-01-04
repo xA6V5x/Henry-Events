@@ -6,7 +6,11 @@ import { RootStackScreenProps } from '../types';
 export default function HomeScreen({ navigation }: RootStackScreenProps<'Home'>) {
      return (
           <View style={styles.container}>
-               <DatesContainer nameDivision="Home" endpoint="https://" navigation={navigation} />
+               <DatesContainer
+                    nameDivision="Home"
+                    endpoint="https://henryevent.onrender.com/home"
+                    navigation={navigation}
+               />
           </View>
      );
 }

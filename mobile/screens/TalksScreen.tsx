@@ -6,7 +6,11 @@ import { RootStackScreenProps } from '../types';
 export default function TalksScreen({ navigation }: RootStackScreenProps<'Talks'>) {
      return (
           <View style={styles.container}>
-               <DatesContainer nameDivision="Talks" endpoint="https://" navigation={navigation} />
+               <DatesContainer
+                    nameDivision="Talks"
+                    endpoint="https://henryevent.onrender.com/talk"
+                    navigation={navigation}
+               />
           </View>
      );
 }

@@ -24,12 +24,12 @@ type DataPost = {
 export function DatesContainer({ nameDivision, endpoint, navigation }: DatesContainerProps) {
      const [dataPost, setDataPost] = useState<DataPost>();
 
-     // useEffect(() => {
-     //      (async () => {
-     //           const dataPost: DataPost = await axios.get(endpoint).then((json) => json.data);
-     //           setDataPost(dataPost);
-     //      })();
-     // }, []);
+     useEffect(() => {
+          (async () => {
+               const dataPost: DataPost = await axios.get(endpoint).then((json) => json.data);
+               setDataPost(dataPost);
+          })();
+     }, []);
 
      return (
           <View style={styles.container}>
@@ -39,7 +39,7 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                          <View style={styles.cards_container}>
                               <View style={{ height: Constants.statusBarHeight }}></View>
                               <TitleDivision title={nameDivision} />
-                              {/* {dataPost?.map((data) => {
+                              {dataPost?.map((data) => {
                                    return (
                                         <Card
                                              navigation={navigation}
@@ -47,11 +47,11 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                                              idPost={data.id}
                                              date={data.date}
                                              title={data.title}
-                                             // favorites={data.favorites}
+                                             favorites={true}
                                         />
                                    );
-                              })} */}
-                              {infoHenry.map((data) => {
+                              })}
+                              {/* {infoHenry.map((data) => {
                                    return (
                                         <Card
                                              navigation={navigation}
@@ -63,7 +63,7 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                                              favorites={data.favorites}
                                         />
                                    );
-                              })}
+                              })} */}
                          </View>
                     </ScrollView>
                </SafeAreaView>
