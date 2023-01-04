@@ -51,19 +51,6 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                                         />
                                    );
                               })}
-                              {/* {infoHenry.map((data) => {
-                                   return (
-                                        <Card
-                                             navigation={navigation}
-                                             key={data.id}
-                                             date={data.date}
-                                             mounth={data.mounth}
-                                             title={data.title}
-                                             idPost={data.id}
-                                             favorites={data.favorites}
-                                        />
-                                   );
-                              })} */}
                          </View>
                     </ScrollView>
                </SafeAreaView>
