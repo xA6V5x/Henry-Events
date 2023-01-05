@@ -1,4 +1,3 @@
-// import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
@@ -6,7 +5,6 @@ import Card from '../components/Card';
 import { NavBar } from './NavBar';
 // import { View } from '../components/Themed';
 import { TitleDivision } from './TitleDivision';
-import infoHenry from '../constants/infoHenryPosts';
 import axios from 'axios';
 
 type DatesContainerProps = {
@@ -19,6 +17,7 @@ type DataPost = {
      id: string;
      title: string;
      date: string;
+     type: string;
 }[];
 
 export function DatesContainer({ nameDivision, endpoint, navigation }: DatesContainerProps) {
@@ -47,6 +46,7 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                                              idPost={data.id}
                                              date={data.date}
                                              title={data.title}
+                                             type={data.type}
                                              favorites={true}
                                         />
                                    );

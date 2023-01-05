@@ -19,6 +19,7 @@ type ModalProps = {
      route: {
           params: {
                idPost: string;
+               type: string;
                favoriteInicial: boolean;
           };
      };
@@ -40,7 +41,7 @@ type DataPost = {
 };
 
 export default function ModalPostScreen({ navigation, route }: ModalProps) {
-     const { idPost, favoriteInicial } = route.params;
+     const { idPost, type, favoriteInicial } = route.params;
 
      const [dataPost, setDataPost] = useState<DataPost>(inicialDataPost);
 
@@ -53,11 +54,14 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
 
      const [commentMessage, setCommentMessage] = useState('');
 
+     const typePedido = { type: type };
+
      useEffect(() => {
           (async () => {
-               // const dataPost: dataPost = await axios
-               //      .get(`https://${idPost}`)
+               // const dataPost: DataPost = await axios
+               //      .get(`https://henryevent.onrender.com/home/${idPost}`, typePedido)
                //      .then((json) => json.data);
+               // setDataPost(dataPost);
                setDataPost(infoPost);
           })();
      }, [idPost]);

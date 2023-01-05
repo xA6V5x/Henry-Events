@@ -12,10 +12,11 @@ type CardProps = {
      idPost: string;
      title: string;
      date: number | string;
+     type: string;
      favorites: boolean;
 };
 
-export default function Card({ navigation, idPost, title, date, favorites }: CardProps) {
+export default function Card({ navigation, idPost, title, date, type, favorites }: CardProps) {
      const [isFavorite, setFavorite] = useState(favorites);
 
      moment.locale('es');
@@ -29,8 +30,9 @@ export default function Card({ navigation, idPost, title, date, favorites }: Car
      return (
           <Pressable
                onPress={() =>
-                    navigation.navigate('ModalPost', {
+                    navigation.push('ModalPost', {
                          idPost,
+                         type,
                          favoriteInicial: isFavorite,
                     })
                }
