@@ -28,10 +28,8 @@ export default function FavoritesScreen({ navigation }: RootStackScreenProps<'Fa
                                              key={data.id}
                                              navigation={navigation}
                                              date={data.date}
-                                             mounth={data.mounth}
                                              title={data.title}
                                              idPost={data.id}
-                                             favorite={data.favorites}
                                         />
                                    );
                               })}

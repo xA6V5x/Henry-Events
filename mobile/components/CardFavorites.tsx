@@ -9,20 +9,11 @@ type CardProps = {
      navigation: any;
      idPost: string;
      title: string;
-     date: number | string;
-     mounth: string;
-     favorite: boolean;
+     date: string;
 };
 
-export default function CardFavorites({
-     navigation,
-     idPost,
-     title,
-     date,
-     mounth,
-     favorite,
-}: CardProps) {
-     const [isFavorite, setFavorite] = useState(favorite);
+export default function CardFavorites({ navigation, idPost, title, date }: CardProps) {
+     const [isFavorite, setFavorite] = useState(true);
 
      const handleFavorite = (boolean: boolean) => {
           setFavorite(boolean);
@@ -42,7 +33,7 @@ export default function CardFavorites({
                     transform: pressed ? [{ scale: 0.97 }] : [{ scale: 1 }],
                })}
           >
-               <Date number={date} mounth={mounth} margin={15} marginRight={0} />
+               <Date date={date} margin={15} marginRight={0} />
                <CenterContainer component={<TitlePost title={title} width="56.3%" />} />
                <Pressable
                     onPress={() => handleFavorite(isFavorite ? false : true)}

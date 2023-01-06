@@ -2,7 +2,7 @@ import { Image, Pressable, StyleSheet, Text } from 'react-native';
 
 type PeopleProps = {
      navigation: any;
-     people: { idUser: string; name: string; img?: string }[];
+     people: { idUser?: string; name?: string; img?: string }[];
      total: number | string;
      closeModal?: (n: boolean) => void;
      margin?: number | string;

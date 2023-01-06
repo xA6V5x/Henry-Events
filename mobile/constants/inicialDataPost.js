@@ -1,19 +1,14 @@
 export default {
+     type: '',
      title: '',
      date: '',
-     mounth: '',
      description: '',
      link: '',
-     author: {
+     user_event: {
           idUser: '',
-          name: '',
+          nickName: '',
           img: '',
      },
-     people: [{ idUser: '', name: '', img: '' }],
-     comments: [
-          { idComment: '1', idUser: '', name: '', img: '', comment: '' },
-          { idComment: '2', idUser: '', name: '', img: '', comment: '' },
-          { idComment: '3', idUser: '', name: '', img: '', comment: '' },
-     ],
-     favorites: true,
+     people_assist: [],
+     comments: [],
 };

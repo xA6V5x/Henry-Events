@@ -4,16 +4,15 @@ import { TitlePost } from './TitlePost';
 
 type HeaderPostProps = {
      title: string;
-     date: number | string;
-     mounth: string;
+     date: string;
      isFavorite: boolean;
      setFavorite: (n: boolean) => void;
 };
 
-export function HeaderPost({ date, mounth, title, isFavorite, setFavorite }: HeaderPostProps) {
+export function HeaderPost({ date, title, isFavorite, setFavorite }: HeaderPostProps) {
      return (
           <View style={styles.header}>
-               <Date number={date} mounth={mounth} margin={15} marginRight={0} />
+               <Date date={date} margin={15} marginRight={0} />
                <TitlePost title={title} width={130} marginLeft={'10%'} marginRight={'10%'} />
                <Pressable onPress={() => setFavorite(isFavorite ? false : true)}>
                     <Image

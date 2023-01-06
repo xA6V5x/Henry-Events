@@ -1,5 +1,7 @@
+import React, { useState } from 'react';
 import { RootStackScreenProps } from '../types';
 import {
+     Button,
      StyleSheet,
      TextInput,
      View,
@@ -10,6 +12,7 @@ import {
      ScrollView,
      Alert,
      TouchableOpacity,
+     Image,
 } from 'react-native';
 import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
@@ -19,11 +22,12 @@ import { HenryEventsLogo } from '../components/HenryEventsLogo';
 import { BackArrow } from '../components/BackArrow';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
+import { CalendarButton } from '../components/CalendarButton';
 
 const reviewSchema = yup.object({
      Title: yup.string().required(),
-     // Date: yup.date().required(),
-     Description: yup.string().required().email(),
+     Date: yup.date().required(),
+     Description: yup.string().required(),
      Link: yup.string().required(),
      EventType: yup.string().required(),
 });
@@ -37,6 +41,20 @@ type CreateEventProps = {
 };
 
 export default function CreateEventScreen({ navigation }: RootStackScreenProps<'CreateEvent'>) {
+     const [date, setDate] = useState(new Date());
+     const [show, setShow] = useState(false);
+     const [text, setText] = useState('Date');
+
+     const onChange = (e: any, selectedDate: any) => {
+          setShow(false);
+          const currentDate = selectedDate || date;
+          setDate(currentDate);
+          let tempDate = new Date(currentDate);
+          let fDate = moment(tempDate, 'YYYY-MM-DD HH:mm Z').format('DD/MM/YYYY');
+          setText(fDate);
+          let sendDate = moment(tempDate, 'YYYY-MM-DD HH:mm Z').format('MM-DD-YYYY');
+     };
+
      const submit = async (values: CreateEventProps) => {
           // if (values.password !== values.confirmPassword) {
           //      return Alert.alert('Passwords do not match');
@@ -86,7 +104,6 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                        'EventType'
                                                   )}
                                                   value={formikProps.values.EventType}
-                                                  secureTextEntry={true}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>
@@ -105,20 +122,24 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                   {/* {formikProps.touched.email &&
                                                        formikProps.errors.email} */}
                                              </Text>
-                                             <DateTimePicker
-                                                  testID="dateTimePicker"
-                                                  minimumDate={formikProps.values.Date}
-                                                  value={formikProps.values.Date}
-                                                  mode="date"
-                                                  display="default"
+                                             <CalendarButton
+                                                  text={text}
+                                                  onPress={() => setShow(true)}
                                              />
-                                             {/* <Input
-                                                  placeholder="Date"
-                                                  onChangeText={formikProps.handleChange('Date')}
-                                                  value={formikProps.values.Date}
-                                                  onBlur={formikProps.handleBlur('Date')}
-                                                  style={styles.input}
-                                             /> */}
+
+                                             {show && (
+                                                  <DateTimePicker
+                                                       testID="dateTimePicker"
+                                                       // onChange={formikProps.handleChange('Title')}
+                                                       minimumDate={formikProps.values.Date}
+                                                       // value={formikProps.values.Date}
+                                                       value={date}
+                                                       mode="date"
+                                                       display="default"
+                                                       onChange={onChange}
+                                                  />
+                                             )}
+
                                              <Text style={styles.text_error}>
                                                   {/* {formikProps.touched.password &&
                                                        formikProps.errors.password} */}
@@ -129,7 +150,6 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                        'Description'
                                                   )}
                                                   value={formikProps.values.Description}
-                                                  secureTextEntry={true}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>
@@ -140,7 +160,6 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                   placeholder={`Link`}
                                                   onChangeText={formikProps.handleChange('Link')}
                                                   value={formikProps.values.Link}
-                                                  secureTextEntry={true}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>

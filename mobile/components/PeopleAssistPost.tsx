@@ -7,8 +7,8 @@ type PeopleAssistPostProps = {
      isAssist: boolean;
      setAssist: (n: boolean) => void;
      people: {
-          idUser: string;
-          name: string;
+          idUser?: string;
+          name?: string;
           img?: string | undefined;
      }[];
      total: string | number;

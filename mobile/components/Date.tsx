@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
+import moment from 'moment';
+import 'moment/locale/es';
 
 type DateProps = {
-     number: number | string;
-     mounth: string;
+     date: string;
      margin?: number | string;
      marginTop?: number | string;
      marginLeft?: number | string;
@@ -11,14 +12,21 @@ type DateProps = {
 };
 
 export function Date({
-     number,
-     mounth,
+     date,
      margin,
      marginTop,
      marginLeft,
      marginRight,
      marginBottom,
 }: DateProps) {
+     moment.locale('es');
+
+     let m = moment(date, 'YYYY-MM-DD HH:mm Z').format('DD MMMM').split(' ');
+
+     const number = m[0].replace(/^(0+)/g, '');
+
+     const mounth = m[1];
+
      const mounthSize = mounth.length <= 8 ? 15 : mounth.length <= 9 ? 12 : 11.5;
 
      return (
@@ -32,8 +40,12 @@ export function Date({
                     marginBottom,
                }}
           >
-               <Text style={styles.date_number}>{number}</Text>
-               <Text style={{ ...styles.date_text, fontSize: mounthSize }}>{mounth}</Text>
+               {date && (
+                    <View>
+                         <Text style={styles.date_number}>{number}</Text>
+                         <Text style={{ ...styles.date_text, fontSize: mounthSize }}>{mounth}</Text>
+                    </View>
+               )}
           </View>
      );
 }

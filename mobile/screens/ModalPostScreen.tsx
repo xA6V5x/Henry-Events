@@ -20,49 +20,52 @@ type ModalProps = {
           params: {
                idPost: string;
                type: string;
-               favoriteInicial: boolean;
           };
      };
 };
 
 type DataPost = {
+     type: string;
      title: string;
-     date: number | string;
-     mounth: string;
+     date: string;
      description: string;
      link?: string;
-     author: {
+     user_event: {
           idUser: string;
-          name: string;
+          nickName: string;
           img?: string;
      };
-     people: { idUser: string; name: string; img?: string }[];
+     people_assist: { idUser?: string; name?: string; img?: string }[];
      comments: { idComment: string; idUser: string; name: string; img?: string; comment: string }[];
 };
 
 export default function ModalPostScreen({ navigation, route }: ModalProps) {
-     const { idPost, type, favoriteInicial } = route.params;
+     const { idPost, type } = route.params;
 
      const [dataPost, setDataPost] = useState<DataPost>(inicialDataPost);
 
-     const { title, date, mounth, description, link, author, people, comments }: DataPost =
+     const { title, date, description, link, user_event, people_assist, comments }: DataPost =
           dataPost;
 
      const [isAssist, setAssist] = useState(false);
 
-     const [isFavorite, setFavorite] = useState(favoriteInicial);
+     const [isFavorite, setFavorite] = useState(false);
 
      const [commentMessage, setCommentMessage] = useState('');
 
-     const typePedido = { type: type };
+     const payload = { type: type };
 
      useEffect(() => {
           (async () => {
-               // const dataPost: DataPost = await axios
-               //      .get(`https://henryevent.onrender.com/home/${idPost}`, typePedido)
-               //      .then((json) => json.data);
-               // setDataPost(dataPost);
-               setDataPost(infoPost);
+               try {
+                    const dataPost: DataPost = await axios
+                         .post(`https://henryevent.onrender.com/home/${idPost}`, payload)
+                         .then((json) => json.data);
+                    setDataPost(dataPost);
+                    // setDataPost(infoPost);
+               } catch (error) {
+                    console.log(error);
+               }
           })();
      }, [idPost]);
 
@@ -83,19 +86,18 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
                          <HeaderPost
                               title={title}
                               date={date}
-                              mounth={mounth}
                               isFavorite={isFavorite}
                               setFavorite={setFavorite}
                          />
                          <DescriptionPost
-                              name={author.name}
-                              img={author.img}
+                              name={user_event.nickName}
+                              img={user_event.img}
                               description={description}
                          />
                          <PeopleAssistPost
                               navigation={navigation}
-                              people={people}
-                              total={isAssist ? people.length + 1 : people.length}
+                              people={people_assist}
+                              total={isAssist ? people_assist.length + 1 : people_assist.length}
                               isAssist={isAssist}
                               setAssist={handleSetAssist}
                          />
@@ -115,6 +117,7 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
 const styles = StyleSheet.create({
      scroll_container: {
           flex: 1,
+          backgroundColor: '#ffff',
      },
      scroll: {
           width: '100%',

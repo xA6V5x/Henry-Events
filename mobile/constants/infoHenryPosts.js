@@ -2,7 +2,7 @@ export default [
      {
           id: 'asdfASFASas',
           title: 'Buenos Aires Bar Oculto 21hs',
-          date: '5',
+          date: '5-12-23',
           mounth: 'enero',
           description:
                'Hola chicos, nos encontraremos el día 20/10/2022 por la noche para celebrar año nuevo',
