@@ -18,5 +18,6 @@ export default function HomeScreen({ navigation }: RootStackScreenProps<'Home'>)
 const styles = StyleSheet.create({
      container: {
           flex: 1,
+          backgroundColor: '#ffff',
      },
 });

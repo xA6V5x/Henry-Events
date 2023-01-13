@@ -18,5 +18,6 @@ export default function MeetingsScreen({ navigation }: RootStackScreenProps<'Mee
 const styles = StyleSheet.create({
      container: {
           flex: 1,
+          backgroundColor: '#ffff',
      },
 });

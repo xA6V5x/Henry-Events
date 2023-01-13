@@ -18,5 +18,6 @@ export default function TalksScreen({ navigation }: RootStackScreenProps<'Talks'
 const styles = StyleSheet.create({
      container: {
           flex: 1,
+          backgroundColor: '#ffff',
      },
 });
