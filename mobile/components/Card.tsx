@@ -20,6 +20,8 @@ export default function Card({ navigation, idPost, title, date, type }: CardProp
                     navigation.push('ModalPost', {
                          idPost,
                          type,
+                         date,
+                         title,
                     })
                }
                style={({ pressed }) => ({

@@ -47,7 +47,6 @@ export function DatesContainer({ nameDivision, endpoint, navigation }: DatesCont
                                              date={data.date}
                                              title={data.title}
                                              type={data.type}
-                                             favorites={true}
                                         />
                                    );
                               })}

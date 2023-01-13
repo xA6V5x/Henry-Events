@@ -20,14 +20,14 @@ type ModalProps = {
           params: {
                idPost: string;
                type: string;
+               title: string;
+               date: string;
           };
      };
 };
 
 type DataPost = {
      type: string;
-     title: string;
-     date: string;
      description: string;
      link?: string;
      user_event: {
@@ -40,12 +40,11 @@ type DataPost = {
 };
 
 export default function ModalPostScreen({ navigation, route }: ModalProps) {
-     const { idPost, type } = route.params;
+     const { idPost, type, title, date } = route.params;
 
      const [dataPost, setDataPost] = useState<DataPost>(inicialDataPost);
 
-     const { title, date, description, link, user_event, people_assist, comments }: DataPost =
-          dataPost;
+     const { description, link, user_event, people_assist, comments }: DataPost = dataPost;
 
      const [isAssist, setAssist] = useState(false);
 
@@ -90,9 +89,11 @@ export default function ModalPostScreen({ navigation, route }: ModalProps) {
                               setFavorite={setFavorite}
                          />
                          <DescriptionPost
+                              type={type}
                               name={user_event.nickName}
                               img={user_event.img}
                               description={description}
+                              link={link}
                          />
                          <PeopleAssistPost
                               navigation={navigation}
