@@ -25,25 +25,26 @@ import moment from 'moment';
 import { CalendarButton } from '../components/CalendarButton';
 
 const reviewSchema = yup.object({
-     Title: yup.string().required(),
-     Date: yup.date().required(),
-     Description: yup.string().required(),
-     Link: yup.string().required(),
-     EventType: yup.string().required(),
+     type: yup.string().required(),
+     title: yup.string().required(),
+     description: yup.string().required(),
+     date: yup.date().required(),
+     link: yup.string().required(),
 });
 
 type CreateEventProps = {
-     Title: string;
-     // Date: Date;
-     Description: string;
-     Link: string;
-     EventType: string;
+     title: string;
+     date: Date;
+     description: string;
+     link: string;
+     type: string;
 };
 
 export default function CreateEventScreen({ navigation }: RootStackScreenProps<'CreateEvent'>) {
-     const [date, setDate] = useState(new Date());
+     const [date, setDate] = useState<Date>(new Date());
      const [show, setShow] = useState(false);
      const [text, setText] = useState('Date');
+     const [sendDate, setSendDate] = useState('');
 
      const onChange = (e: any, selectedDate: any) => {
           setShow(false);
@@ -52,10 +53,12 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
           let tempDate = new Date(currentDate);
           let fDate = moment(tempDate, 'YYYY-MM-DD HH:mm Z').format('DD/MM/YYYY');
           setText(fDate);
-          let sendDate = moment(tempDate, 'YYYY-MM-DD HH:mm Z').format('MM-DD-YYYY');
+          let dateMMDDYY = moment(tempDate, 'YYYY-MM-DD HH:mm Z').format('MM-DD-YYYY');
+          setSendDate(dateMMDDYY);
      };
 
      const submit = async (values: CreateEventProps) => {
+          console.log({ ...values, date: sendDate, user_event: '63b63318ddb5877441f60b51' });
           // if (values.password !== values.confirmPassword) {
           //      return Alert.alert('Passwords do not match');
           // }
@@ -84,11 +87,11 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                     <View style={styles.form_container}>
                          <Formik
                               initialValues={{
-                                   Title: '',
-                                   Date: new Date(),
-                                   Description: '',
-                                   Link: '',
-                                   EventType: '',
+                                   type: '',
+                                   title: '',
+                                   description: '',
+                                   date: new Date(),
+                                   link: '',
                               }}
                               validationSchema={reviewSchema}
                               onSubmit={submit}
@@ -100,10 +103,8 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                         >
                                              <TextInput
                                                   placeholder="Event Type"
-                                                  onChangeText={formikProps.handleChange(
-                                                       'EventType'
-                                                  )}
-                                                  value={formikProps.values.EventType}
+                                                  onChangeText={formikProps.handleChange('type')}
+                                                  value={formikProps.values.type}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>
@@ -112,9 +113,9 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                              </Text>
                                              <TextInput
                                                   placeholder="Title"
-                                                  onChangeText={formikProps.handleChange('Title')}
-                                                  value={formikProps.values.Title}
-                                                  onBlur={formikProps.handleBlur('Title')}
+                                                  onChangeText={formikProps.handleChange('title')}
+                                                  value={formikProps.values.title}
+                                                  onBlur={formikProps.handleBlur('title')}
                                                   style={styles.input}
                                              />
 
@@ -130,9 +131,7 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                              {show && (
                                                   <DateTimePicker
                                                        testID="dateTimePicker"
-                                                       // onChange={formikProps.handleChange('Title')}
-                                                       minimumDate={formikProps.values.Date}
-                                                       // value={formikProps.values.Date}
+                                                       minimumDate={formikProps.values.date}
                                                        value={date}
                                                        mode="date"
                                                        display="default"
@@ -147,9 +146,9 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                              <TextInput
                                                   placeholder="Description"
                                                   onChangeText={formikProps.handleChange(
-                                                       'Description'
+                                                       'description'
                                                   )}
-                                                  value={formikProps.values.Description}
+                                                  value={formikProps.values.description}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>
@@ -158,8 +157,8 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                              </Text>
                                              <TextInput
                                                   placeholder={`Link`}
-                                                  onChangeText={formikProps.handleChange('Link')}
-                                                  value={formikProps.values.Link}
+                                                  onChangeText={formikProps.handleChange('link')}
+                                                  value={formikProps.values.link}
                                                   style={styles.input}
                                              />
                                              <Text style={styles.text_error}>
