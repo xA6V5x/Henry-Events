@@ -122,11 +122,11 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                   {/* {formikProps.touched.email &&
                                                        formikProps.errors.email} */}
                                              </Text>
+
                                              <CalendarButton
                                                   text={text}
                                                   onPress={() => setShow(true)}
                                              />
-
                                              {show && (
                                                   <DateTimePicker
                                                        testID="dateTimePicker"
