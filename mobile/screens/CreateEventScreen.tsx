@@ -134,7 +134,8 @@ export default function CreateEventScreen({ navigation }: RootStackScreenProps<'
                                                        minimumDate={formikProps.values.date}
                                                        value={date}
                                                        mode="date"
-                                                       display="default"
+                                                       // display="default"
+                                                       display="spinner"
                                                        onChange={onChange}
                                                   />
                                              )}
